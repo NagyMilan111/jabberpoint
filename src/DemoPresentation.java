@@ -44,10 +44,11 @@ class DemoPresentation extends Accessor {
 		slide.append(2, "use File->Open from the menu.");
 		slide.append(1, " ");
 		slide.append(1, "This is the end of the presentation.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg"));
+		slide.append(new BitmapItem(1, "JabberPoint.jpg")); //jabberpoint.jpg not found
 		presentation.append(slide);
 	}
 
+	//Actual saving functionality is not implemented
 	public void saveFile(Presentation presentation, String unusedFilename) {
 		throw new IllegalStateException("Save As->Demo! called");
 	}

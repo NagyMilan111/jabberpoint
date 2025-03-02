@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class MenuController extends MenuBar {
 	
 	private Frame parent; // the frame, only used as parent for the Dialogs
-	private Presentation presentation; // Commands are given to the presentation
+	private Presentation presentation; //Probably supposed to be a singleton
 	
 	private static final long serialVersionUID = 227L;
 	
@@ -50,13 +50,15 @@ public class MenuController extends MenuBar {
 		presentation = pres;
 		MenuItem menuItem;
 		Menu fileMenu = new Menu(FILE);
+
+		//Open a new presentation
 		fileMenu.add(menuItem = mkMenuItem(OPEN));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				presentation.clear();
 				Accessor xmlAccessor = new XMLAccessor();
 				try {
-					xmlAccessor.loadFile(presentation, TESTFILE);
+					xmlAccessor.loadFile(presentation, TESTFILE); //This will only ever load the test file
 					presentation.setSlideNumber(0);
 				} catch (IOException exc) {
 					JOptionPane.showMessageDialog(parent, IOEX + exc, 
@@ -65,6 +67,8 @@ public class MenuController extends MenuBar {
 				parent.repaint();
 			}
 		} );
+
+		//Create a new blank presentation
 		fileMenu.add(menuItem = mkMenuItem(NEW));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -72,6 +76,8 @@ public class MenuController extends MenuBar {
 				parent.repaint();
 			}
 		});
+
+		//Save presentation to file
 		fileMenu.add(menuItem = mkMenuItem(SAVE));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -84,6 +90,8 @@ public class MenuController extends MenuBar {
 				}
 			}
 		});
+
+		//Exit Jabberpoint
 		fileMenu.addSeparator();
 		fileMenu.add(menuItem = mkMenuItem(EXIT));
 		menuItem.addActionListener(new ActionListener() {
@@ -92,6 +100,8 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(fileMenu);
+
+		//Next slide
 		Menu viewMenu = new Menu(VIEW);
 		viewMenu.add(menuItem = mkMenuItem(NEXT));
 		menuItem.addActionListener(new ActionListener() {
@@ -99,12 +109,16 @@ public class MenuController extends MenuBar {
 				presentation.nextSlide();
 			}
 		});
+
+		//Previous slide
 		viewMenu.add(menuItem = mkMenuItem(PREV));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				presentation.prevSlide();
 			}
 		});
+
+		//Go to the entered slide number
 		viewMenu.add(menuItem = mkMenuItem(GOTO));
 		menuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
@@ -114,6 +128,8 @@ public class MenuController extends MenuBar {
 			}
 		});
 		add(viewMenu);
+
+		//Open about box
 		Menu helpMenu = new Menu(HELP);
 		helpMenu.add(menuItem = mkMenuItem(ABOUT));
 		menuItem.addActionListener(new ActionListener() {

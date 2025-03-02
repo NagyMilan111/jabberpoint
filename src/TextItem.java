@@ -65,9 +65,9 @@ public class TextItem extends SlideItem {
 				xsize = (int) bounds.getWidth();
 			}
 			if (bounds.getHeight() > 0) {
-				ysize += bounds.getHeight();
+				ysize += bounds.getHeight(); //needs to be cast to int
 			}
-			ysize += layout.getLeading() + layout.getDescent();
+			ysize += layout.getLeading() + layout.getDescent(); //needs to be cast to int
 		}
 		return new Rectangle((int) (myStyle.indent*scale), 0, xsize, ysize );
 	}

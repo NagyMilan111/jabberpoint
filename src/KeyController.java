@@ -12,12 +12,13 @@ import java.awt.event.KeyAdapter;
 */
 
 public class KeyController extends KeyAdapter {
-	private Presentation presentation; // Commands are given to the presentation
+	private Presentation presentation; //This is probably supposed to be a singleton, but isn't
 
 	public KeyController(Presentation p) {
 		presentation = p;
 	}
 
+	//there are undocumented key combinations here? why? probably a bug
 	public void keyPressed(KeyEvent keyEvent) {
 		switch(keyEvent.getKeyCode()) {
 			case KeyEvent.VK_PAGE_DOWN:

@@ -35,7 +35,7 @@ public class Style {
 	}
 
 	public static Style getStyle(int level) {
-		if (level >= styles.length) {
+		if (level >= styles.length) {// this is probably not correct
 			level = styles.length - 1;
 		}
 		return styles[level];

@@ -62,11 +62,15 @@ public class Slide {
 	public void draw(Graphics g, Rectangle area, ImageObserver view) {
 		float scale = getScale(area);
 	    int y = area.y;
+
+
 	// Title is handled separately
 	    SlideItem slideItem = new TextItem(0, getTitle());
 	    Style style = Style.getStyle(slideItem.getLevel());
 	    slideItem.draw(area.x, y, scale, g, style, view);
 	    y += slideItem.getBoundingBox(g, view, scale, style).height;
+
+
 	    for (int number=0; number<getSize(); number++) {
 	      slideItem = (SlideItem)getSlideItems().elementAt(number);
 	      style = Style.getStyle(slideItem.getLevel());

@@ -27,11 +27,12 @@ public class JabberPoint {
 		Style.createStyles();
 		Presentation presentation = new Presentation();
 		new SlideViewerFrame(JABVERSION, presentation);
+
 		try {
-			if (argv.length == 0) { // een demo presentatie
+			if (argv.length == 0) { //a demo presentation if no arguments
 				Accessor.getDemoAccessor().loadFile(presentation, "");
 			} else {
-				new XMLAccessor().loadFile(presentation, argv[0]);
+				new XMLAccessor().loadFile(presentation, argv[0]); //otherwise load the presentation which is in the argument
 			}
 			presentation.setSlideNumber(0);
 		} catch (IOException ex) {

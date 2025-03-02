@@ -16,8 +16,8 @@ import java.util.ArrayList;
 public class Presentation {
 	private String showTitle; // title of the presentation
 	private ArrayList<Slide> showList = null; // an ArrayList with Slides
-	private int currentSlideNumber = 0; // the slidenummer of the current Slide
-	private SlideViewerComponent slideViewComponent = null; // the viewcomponent of the Slides
+	private int currentSlideNumber = 0; // the slide number of the current Slide
+	private SlideViewerComponent slideViewComponent = null; // the view component of the Slides
 
 	public Presentation() {
 		slideViewComponent = null;
@@ -29,6 +29,8 @@ public class Presentation {
 		clear();
 	}
 
+
+	//get the size of the presentation, in number of slides
 	public int getSize() {
 		return showList.size();
 	}
@@ -50,7 +52,7 @@ public class Presentation {
 		return currentSlideNumber;
 	}
 
-	// change the current slide number and signal it to the window
+	// change the current slide number according to the number
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
@@ -66,6 +68,7 @@ public class Presentation {
 	}
 
 	// go to the next slide unless your at the end of the presentation.
+	//bugged as hell, will never go to the last slide
 	public void nextSlide() {
 		if (currentSlideNumber < (showList.size()-1)) {
 			setSlideNumber(currentSlideNumber + 1);
@@ -83,10 +86,10 @@ public class Presentation {
 		showList.add(slide);
 	}
 
-	// Get a slide with a certain slidenumber
+	// Get a slide with a certain slide number
 	public Slide getSlide(int number) {
 		if (number < 0 || number >= getSize()){
-			return null;
+			return null; //this should probably return an error message instead tbh
 	    }
 			return (Slide)showList.get(number);
 	}
