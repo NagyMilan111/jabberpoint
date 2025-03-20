@@ -1,3 +1,5 @@
+package jabberpoint;
+
 import java.awt.Dimension;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
@@ -20,17 +22,20 @@ public class SlideViewerFrame extends JFrame {
 	private static final String JABTITLE = "Jabberpoint 1.6 - OU";
 	public final static int WIDTH = 1200;
 	public final static int HEIGHT = 800;
+
+	private Presentation presentation;
 	
-	public SlideViewerFrame(String title, Presentation presentation) {
+	public SlideViewerFrame(String title, Presentation presentation, CommandInvoker invoker) {
 		super(title);
+		this.presentation = presentation;
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
 		presentation.setShowView(slideViewerComponent);
-		setupWindow(slideViewerComponent, presentation);
+		setupWindow(slideViewerComponent, invoker);
 	}
 
 // Setup GUI
 	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, Presentation presentation) {
+			slideViewerComponent, CommandInvoker invoker) {
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
@@ -38,9 +43,19 @@ public class SlideViewerFrame extends JFrame {
 				}
 			});
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(presentation)); // add a controller
-		setMenuBar(new MenuController(this, presentation));	// add another controller
-		setSize(new Dimension(WIDTH, HEIGHT)); // Same sizes as Slide has.
+		addKeyListener(new KeyController(this, invoker)); // add a controller
+		setMenuBar(new MenuController(this, invoker));	// add another controller
+		setSize(new Dimension(WIDTH, HEIGHT)); // Same sizes as jabberpoint.Slide has.
 		setVisible(true);
+	}
+
+	public Presentation getPresentation()
+	{
+		return this.presentation;
+	}
+
+	public void setPresentation(Presentation presentation)
+	{
+		this.presentation = presentation;
 	}
 }

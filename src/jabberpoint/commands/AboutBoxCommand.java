@@ -1,0 +1,17 @@
+package jabberpoint.commands;
+
+import jabberpoint.*;
+
+public class AboutBoxCommand extends SlideViewerFrameController
+{
+    public AboutBoxCommand(SlideViewerFrame frame)
+    {
+        super(frame);
+    }
+
+    @Override
+    public void execute(Integer slideNumber)
+    {
+        AboutBox.show(frame);
+    }
+}

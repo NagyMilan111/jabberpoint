@@ -1,3 +1,5 @@
+package jabberpoint;
+
 import java.util.Vector;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +17,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
 
 
-/** XMLAccessor, reads and writes XML files
+/** jabberpoint.XMLAccessor, reads and writes XML files
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman

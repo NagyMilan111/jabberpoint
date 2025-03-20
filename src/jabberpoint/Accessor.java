@@ -1,7 +1,9 @@
+package jabberpoint;
+
 import java.io.IOException;
 
 /**
- * <p>Een Accessor maakt het mogelijk om gegevens voor een presentatie
+ * <p>Een jabberpoint.Accessor maakt het mogelijk om gegevens voor een presentatie
  * te lezen of te schrijven.</p>
  * <p>Niet-abstracte subklassen moeten de load en de save methode implementeren.</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
