@@ -13,15 +13,21 @@ import java.awt.image.ImageObserver;
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
 
-public abstract class SlideItem {
+public abstract class SlideItem implements SlideComponent{
 	private int level = 0; // level of the slideitem
+	private Style style;
 
-	public SlideItem(int lev) {
-		level = lev;
+	public SlideItem(int level, Style style)
+	{
+		this.level = level;
+		this.style = style;
 	}
 
+	/**
+	 * Default constructor creates a SlideItem at level 0 with a default style.
+	 */
 	public SlideItem() {
-		this(0);
+		this(0, Style.getStyle(0));
 	}
 
 // Give the level
@@ -29,11 +35,34 @@ public abstract class SlideItem {
 		return level;
 	}
 
-// Give the bounding box
-	public abstract Rectangle getBoundingBox(Graphics g, 
+	public void setLevel(int level)
+	{
+		this.level = level;
+	}
+
+	public Style getStyle()
+	{
+		return style;
+	}
+
+	public void setStyle(Style style)
+	{
+		this.style = style;
+	}
+
+	// Give the bounding box
+	public abstract Rectangle getBoundingBox(Graphics g,
 			ImageObserver observer, float scale, Style style);
 
 // Draw the item
-	public abstract void draw(int x, int y, float scale, 
+	public abstract void draw(int x, int y, float scale,
 			Graphics g, Style style, ImageObserver observer);
+
+	@Override
+	public int draw(Graphics g, int x, int y) {
+		// You can adjust this default behavior as needed.
+		draw(x, y, 1.0f, g, style, null);
+		// Advance y by a default spacing (e.g., style leading plus font height)
+		return y + style.leading + g.getFontMetrics(style.getFont(1.0f)).getHeight();
+	}
 }
