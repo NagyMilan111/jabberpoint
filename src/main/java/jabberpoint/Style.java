@@ -37,7 +37,8 @@ public class Style {
 	}
 
 	public static Style getStyle(int level) {
-		if (level >= styles.length) {// this is probably not correct
+		if (styles == null) createStyles();
+		if (level >= styles.length) { // if level too high, use the last one
 			level = styles.length - 1;
 		}
 		return styles[level];
@@ -46,7 +47,8 @@ public class Style {
 	public Style(int indent, Color color, int points, int leading) {
 		this.indent = indent;
 		this.color = color;
-		font = new Font(FONTNAME, Font.BOLD, fontSize=points);
+		font = new Font(FONTNAME, Font.BOLD, points);
+		this.fontSize = points;
 		this.leading = leading;
 	}
 

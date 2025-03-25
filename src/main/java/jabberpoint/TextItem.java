@@ -26,20 +26,22 @@ import java.util.ArrayList;
  * @version 1.6 2014/05/16 Sylvia Stuurman
  */
 
-public class TextItem extends SlideItem {
+public class TextItem extends SlideItem
+{
 	private String text;
 	
 	private static final String EMPTYTEXT = "No Text Given";
 
 // a textitem of level level, with the text string
-	public TextItem(int level, String string) {
-		super(level);
-		text = string;
+	public TextItem(int level, Style style, String text)
+	{
+		super(level, style);
+		this.text = text;
 	}
 
 // an empty textitem
 	public TextItem() {
-		this(0, EMPTYTEXT);
+		this(0, Style.getStyle(0), EMPTYTEXT);
 	}
 
 // give the text
@@ -50,62 +52,66 @@ public class TextItem extends SlideItem {
 // geef de AttributedString voor het item
 	public AttributedString getAttributedString(Style style, float scale) {
 		AttributedString attrStr = new AttributedString(getText());
-		attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, text.length());
+		attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, getText().length());
 		return attrStr;
 	}
 
 // give the bounding box of the item
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, 
-			float scale, Style myStyle) {
+@Override
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
+	{
 		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
 		int xsize = 0, ysize = (int) (myStyle.leading * scale);
-		Iterator<TextLayout> iterator = layouts.iterator();
-		while (iterator.hasNext()) {
-			TextLayout layout = iterator.next();
+
+		for (TextLayout layout : layouts)
+		{
 			Rectangle2D bounds = layout.getBounds();
-			if (bounds.getWidth() > xsize) {
-				xsize = (int) bounds.getWidth();
-			}
-			if (bounds.getHeight() > 0) {
-				ysize += bounds.getHeight(); //needs to be cast to int
-			}
-			ysize += layout.getLeading() + layout.getDescent(); //needs to be cast to int
+			xsize = (int) Math.max(xsize, bounds.getWidth());
+			ysize += (int) (bounds.getHeight() + layout.getLeading() + layout.getDescent());
 		}
-		return new Rectangle((int) (myStyle.indent*scale), 0, xsize, ysize );
+
+		return new Rectangle((int)(myStyle.indent * scale), 0, xsize, ysize);
 	}
 
 // draw the item
-	public void draw(int x, int y, float scale, Graphics g, 
-			Style myStyle, ImageObserver o) {
-		if (text == null || text.length() == 0) {
-			return;
-		}
-		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-		Point pen = new Point(x + (int)(myStyle.indent * scale), 
-				y + (int) (myStyle.leading * scale));
-		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(myStyle.color);
-		Iterator<TextLayout> it = layouts.iterator();
-		while (it.hasNext()) {
-			TextLayout layout = it.next();
-			pen.y += layout.getAscent();
-			layout.draw(g2d, pen.x, pen.y);
-			pen.y += layout.getDescent();
-		}
-	  }
+	@Override
+	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
+	{
+		if (getText().isEmpty()) return;
 
-	private List<TextLayout> getLayouts(Graphics g, Style s, float scale) {
-		List<TextLayout> layouts = new ArrayList<TextLayout>();
+		List<TextLayout> layouts = getLayouts(g, myStyle, scale);
+
+		Point pen = new Point(x + (int)(myStyle.indent * scale), y + (int)(myStyle.leading * scale));
+		Graphics2D g2d = (Graphics2D) g;
+		g2d.setColor(myStyle.color);
+
+		for (TextLayout layout : layouts)
+		{
+			pen.y += (int) layout.getAscent();
+			layout.draw(g2d, pen.x, pen.y);
+			pen.y += (int) layout.getDescent();
+		}
+	}
+
+	private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
+	{
+		List<TextLayout> layouts = new ArrayList<>();
+
 		AttributedString attrStr = getAttributedString(s, scale);
-    	Graphics2D g2d = (Graphics2D) g;
-    	FontRenderContext frc = g2d.getFontRenderContext();
-    	LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
-    	float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
-    	while (measurer.getPosition() < getText().length()) {
-    		TextLayout layout = measurer.nextLayout(wrappingWidth);
-    		layouts.add(layout);
-    	}
-    	return layouts;
+		Graphics2D g2d = (Graphics2D) g;
+		FontRenderContext frc = g2d.getFontRenderContext();
+		LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
+
+		// Assume Slide.WIDTH is defined; adjust wrappingWidth as needed.
+		float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+
+		while (measurer.getPosition() < getText().length())
+		{
+			TextLayout layout = measurer.nextLayout(wrappingWidth);
+			layouts.add(layout);
+		}
+
+		return layouts;
 	}
 
 	public String toString() {

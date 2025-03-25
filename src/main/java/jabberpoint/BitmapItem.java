@@ -1,5 +1,3 @@
-package jabberpoint;
-
 import java.awt.Rectangle;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -22,52 +20,70 @@ import java.io.IOException;
  * @version 1.6 2014/05/16 Sylvia Stuurman
 */
 
-public class BitmapItem extends SlideItem {
+public class BitmapItem extends SlideItem
+{
   private BufferedImage bufferedImage;
   private String imageName;
-  
   protected static final String FILE = "File ";
   protected static final String NOTFOUND = " not found";
 
 // level is equal to item-level; name is the name of the file with the Image
-	public BitmapItem(int level, String name) {
-		super(level);
-		imageName = name;
-		try {
+public BitmapItem(int level, Style style, String name)
+{
+	super(level, style);
+	this.imageName = name;
+
+	try
+	{
+		if (name != null)
+		{
 			bufferedImage = ImageIO.read(new File(imageName));
 		}
-		catch (IOException e) {
-			System.err.println(FILE + imageName + NOTFOUND) ;
-		}
 	}
+	catch (IOException e)
+	{
+		System.err.println(FILE + imageName + NOTFOUND);
+	}
+}
 
 // An empty bitmap-item
-	public BitmapItem() {
-		this(0, null);
+	public BitmapItem()
+	{
+		this(0, Style.getStyle(0), null);
 	}
 
 // give the filename of the image
-	public String getName() {
+	public String getName()
+	{
 		return imageName;
 	}
 
 // give the  bounding box of the image
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle) {
-		return new Rectangle((int) (myStyle.indent * scale), 0,
-				(int) (bufferedImage.getWidth(observer) * scale),
-				((int) (myStyle.leading * scale)) + 
-				(int) (bufferedImage.getHeight(observer) * scale));
+	@Override
+	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
+	{
+		if (bufferedImage == null) return new Rectangle(0, 0, 0, 0);
+		int width = (int) (bufferedImage.getWidth(observer) * scale);
+		int height = (int) (bufferedImage.getHeight(observer) * scale);
+
+		return new Rectangle((int) (myStyle.indent * scale), 0, width, (int)(myStyle.leading * scale) + height);
 	}
 
 // draw the image
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer) {
-		int width = x + (int) (myStyle.indent * scale);
-		int height = y + (int) (myStyle.leading * scale);
-		g.drawImage(bufferedImage, width, height,(int) (bufferedImage.getWidth(observer)*scale),
-                (int) (bufferedImage.getHeight(observer)*scale), observer);
+	@Override
+	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
+	{
+		if (bufferedImage == null) return;
+
+		int drawX = x + (int)(myStyle.indent * scale);
+		int drawY = y + (int)(myStyle.leading * scale);
+		int width = (int)(bufferedImage.getWidth(observer) * scale);
+		int height = (int)(bufferedImage.getHeight(observer) * scale);
+		g.drawImage(bufferedImage, drawX, drawY, width, height, observer);
 	}
 
-	public String toString() {
-		return "jabberpoint.BitmapItem[" + getLevel() + "," + imageName + "]";
+	public String toString()
+	{
+		return "BitmapItem[" + getLevel() + "," + imageName + "]";
 	}
 }
