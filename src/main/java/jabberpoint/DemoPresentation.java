@@ -1,3 +1,5 @@
+package jabberpoint;
+
 /** A built in demo-presentation
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
@@ -11,15 +13,15 @@
 class DemoPresentation extends Accessor {
 
 	public void loadFile(Presentation presentation, String unusedFilename) {
-		presentation.setTitle("Demo Presentation");
+		presentation.setTitle("Demo jabberpoint.Presentation");
 		Slide slide;
 		slide = new Slide();
-		slide.setTitle("JabberPoint");
-		slide.append(1, "The Java Presentation Tool");
+		slide.setTitle("jabberpoint.JabberPoint");
+		slide.append(1, "The Java jabberpoint.Presentation Tool");
 		slide.append(2, "Copyright (c) 1996-2000: Ian Darwin");
 		slide.append(2, "Copyright (c) 2000-now:");
 		slide.append(2, "Gert Florijn andn Sylvia Stuurman");
-		slide.append(4, "Starting JabberPoint without a filename");
+		slide.append(4, "Starting jabberpoint.JabberPoint without a filename");
 		slide.append(4, "shows this presentation");
 		slide.append(1, "Navigate:");
 		slide.append(3, "Next slide: PgDn or Enter");
@@ -44,7 +46,7 @@ class DemoPresentation extends Accessor {
 		slide.append(2, "use File->Open from the menu.");
 		slide.append(1, " ");
 		slide.append(1, "This is the end of the presentation.");
-		slide.append(new BitmapItem(1, "JabberPoint.jpg")); //jabberpoint.jpg not found
+		slide.append(new BitmapItem(1, "jabberpoint.JabberPoint.jpg")); //jabberpoint.jpg not found
 		presentation.append(slide);
 	}
 

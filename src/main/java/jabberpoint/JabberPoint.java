@@ -1,8 +1,10 @@
+package jabberpoint;
+
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
 
-/** JabberPoint Main Programma
+/** jabberpoint.JabberPoint Main Programma
  * <p>This program is distributed under the terms of the accompanying
  * COPYRIGHT.txt file (which is NOT the GNU General Public License).
  * Please read it. Your use of the software constitutes acceptance
@@ -23,10 +25,11 @@ public class JabberPoint {
 
 	/** Het Main Programma */
 	public static void main(String argv[]) {
-		
+
+		CommandInvoker invoker = new CommandInvoker();
 		Style.createStyles();
 		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation);
+		new SlideViewerFrame(JABVERSION, presentation, invoker);
 
 		try {
 			if (argv.length == 0) { //a demo presentation if no arguments

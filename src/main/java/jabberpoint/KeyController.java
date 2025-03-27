@@ -1,7 +1,11 @@
+package jabberpoint;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
 
-/** <p>This is the KeyController (KeyListener)</p>
+import static jabberpoint.MenuController.*;
+
+/** <p>This is the jabberpoint.KeyController (KeyListener)</p>
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
  * @version 1.1 2002/12/17 Gert Florijn
  * @version 1.2 2003/11/19 Sylvia Stuurman
@@ -12,10 +16,12 @@ import java.awt.event.KeyAdapter;
 */
 
 public class KeyController extends KeyAdapter {
-	private Presentation presentation; //This is probably supposed to be a singleton, but isn't
+	private SlideViewerFrame frame; //This is probably supposed to be a singleton, but isn't
+	private CommandInvoker invoker;
 
-	public KeyController(Presentation p) {
-		presentation = p;
+	public KeyController(SlideViewerFrame frame, CommandInvoker invoker) {
+		this.frame = frame;
+		this.invoker = invoker;
 	}
 
 	//there are undocumented key combinations here? why? probably a bug
@@ -25,16 +31,16 @@ public class KeyController extends KeyAdapter {
 			case KeyEvent.VK_DOWN:
 			case KeyEvent.VK_ENTER:
 			case '+':
-				presentation.nextSlide();
+				invoker.executeCommand(NEXT, null);
 				break;
 			case KeyEvent.VK_PAGE_UP:
 			case KeyEvent.VK_UP:
 			case '-':
-				presentation.prevSlide();
+				invoker.executeCommand(PREV, null);
 				break;
 			case 'q':
 			case 'Q':
-				System.exit(0);
+				invoker.executeCommand(EXIT, null);
 				break; // Probably never reached!!
 			default:
 				break;
