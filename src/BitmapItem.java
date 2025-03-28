@@ -23,9 +23,9 @@ import java.io.IOException;
 public class BitmapItem extends SlideItem
 {
   private BufferedImage bufferedImage;
-  private String imageName;
+  private final String imageName;
   protected static final String FILE = "File ";
-  protected static final String NOTFOUND = " not found";
+  protected static final String NOT_FOUND = " not found";
 
 // level is equal to item-level; name is the name of the file with the Image
 public BitmapItem(int level, Style style, String name)
@@ -42,7 +42,7 @@ public BitmapItem(int level, Style style, String name)
 	}
 	catch (IOException e)
 	{
-		System.err.println(FILE + imageName + NOTFOUND);
+		System.err.println(FILE + imageName + NOT_FOUND);
 	}
 }
 

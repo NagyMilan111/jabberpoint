@@ -1,24 +1,19 @@
 import java.util.ArrayList;
-
+import java.util.List;
 
 /**
  * <p>Presentation maintains the slides in the presentation.</p>
- * <p>There is only instance of this class.</p>
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+ * <p>In the revised design, each Slide is a composite (implementing SlideComponent)
+ * and is built using the Composite and Factory Method patterns.</p>
+ * <p>There is only one instance of this class.</p>
+ *
+ * (Original code by Darwin, Florijn & Sylvia Stuurman, updated for Composite/Factory.)
  */
-
-public class Presentation
-{
-	private String showTitle; // title of the presentation
-	private ArrayList<Slide> showList = null; // an ArrayList with Slides
-	private int currentSlideNumber = 0; // the slide number of the current Slide
-	private SlideViewerComponent slideViewComponent = null; // the view component of the Slides
+public class Presentation {
+	private String showTitle;               // Title of the presentation.
+	private List<Slide> showList;           // A list of Slides (composites).
+	private int currentSlideNumber = 0;     // The slide number of the current Slide.
+	private SlideViewerComponent slideViewComponent = null;  // The view component for displaying slides.
 
 	public Presentation() {
 		slideViewComponent = null;
@@ -30,8 +25,7 @@ public class Presentation
 		clear();
 	}
 
-
-	//get the size of the presentation, in number of slides
+	// Returns the number of slides.
 	public int getSize() {
 		return showList.size();
 	}
@@ -48,12 +42,12 @@ public class Presentation
 		this.slideViewComponent = slideViewerComponent;
 	}
 
-	// give the number of the current slide
+	// Returns the number of the current slide.
 	public int getSlideNumber() {
 		return currentSlideNumber;
 	}
 
-	// change the current slide number according to the number
+	// Changes the current slide number and notifies the view component.
 	public void setSlideNumber(int number) {
 		currentSlideNumber = number;
 		if (slideViewComponent != null) {
@@ -61,41 +55,40 @@ public class Presentation
 		}
 	}
 
-	// go to the previous slide unless your at the beginning of the presentation
+	// Go to the previous slide.
 	public void prevSlide() {
 		if (currentSlideNumber > 0) {
 			setSlideNumber(currentSlideNumber - 1);
-	    }
+		}
 	}
 
-	// go to the next slide unless your at the end of the presentation.
-	//bugged as hell, will never go to the last slide
+	// Go to the next slide.
 	public void nextSlide() {
-		if (currentSlideNumber < (showList.size()-1)) {
+		if (currentSlideNumber < (showList.size() - 1)) {
 			setSlideNumber(currentSlideNumber + 1);
 		}
 	}
 
-	// Delete the presentation to be ready for the next one.
+	// Clears the presentation to prepare for a new one.
 	void clear() {
-		showList = new ArrayList<Slide>();
-		setSlideNumber(-1);
+		showList = new ArrayList<>();
+		setSlideNumber(0);
 	}
 
-	// Add a slide to the presentation
+	// Adds a Slide (composite) to the presentation.
 	public void append(Slide slide) {
 		showList.add(slide);
 	}
 
-	// Get a slide with a certain slide number
+	// Returns the slide at the specified index.
 	public Slide getSlide(int number) {
 		if (number < 0 || number >= getSize()){
-			return null; //this should probably return an error message instead tbh
-	    }
-			return (Slide)showList.get(number);
+			return null; // In a full implementation, consider throwing an exception.
+		}
+		return showList.get(number);
 	}
 
-	// Give the current slide
+	// Returns the current slide.
 	public Slide getCurrentSlide() {
 		return getSlide(currentSlideNumber);
 	}
