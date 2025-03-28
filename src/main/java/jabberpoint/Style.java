@@ -19,7 +19,7 @@ import java.awt.Font;
 public class Style {
 	private static Style[] styles; // de styles
 	
-	private static final String FONTNAME = "Helvetica";
+	private static final String FONT_NAME = "Helvetica";
 	int indent;
 	Color color;
 	Font font;
@@ -47,7 +47,7 @@ public class Style {
 	public Style(int indent, Color color, int points, int leading) {
 		this.indent = indent;
 		this.color = color;
-		font = new Font(FONTNAME, Font.BOLD, points);
+		font = new Font(FONT_NAME, Font.BOLD, points);
 		this.fontSize = points;
 		this.leading = leading;
 	}

@@ -21,7 +21,7 @@ public class Slide implements SlideComponent
 
 	public Slide()
 	{
-		this.components = new Vector<SlideComponent>();
+		this.components = new Vector<>();
 	}
 
 	// Add a slide item
@@ -73,30 +73,38 @@ public class Slide implements SlideComponent
 
 
 		// Title is handled separately
-		SlideItem slideItem = new TextItem(0, getTitle());
-		Style style = Style.getStyle(slideItem.getLevel());
-		slideItem.draw(area.x, y, scale, g, style, view);
-		y += slideItem.getBoundingBox(g, view, scale, style).height;
-
+		SlideComponent slideComponent = SlideItemFactory.createSlideItem("text",0, Style.getStyle(0), getTitle());
+		slideComponent.draw(g, area.x, y);
+		y += ((TextItem) slideComponent).getBoundingBox(g, view, scale, Style.getStyle(0)).height;
 
 		for (int number = 0; number < getSize(); number++)
 		{
-			slideItem = (SlideItem) getSlideItems().elementAt(number);
-			style = Style.getStyle(slideItem.getLevel());
-			slideItem.draw(area.x, y, scale, g, style, view);
-			y += slideItem.getBoundingBox(g, view, scale, style).height;
+			SlideComponent component = getSlideItems().elementAt(number);
+			Style style = Style.getStyle(getComponentLevel(component));
+			component.draw(g, area.x, y);
+			y += ((SlideItem) component).getBoundingBox(g, view, scale, style).height;
 		}
 	}
 
-	// Give the scale for drawing
-	private float getScale(Rectangle area)
+	@Override
+	public int draw(Graphics g, int x, int y)
 	{
+		// Create a default area using the starting x and y, or use the JFrame's dimensions.
+		Rectangle area = new Rectangle(x, y, Slide.WIDTH, Slide.HEIGHT);
+		// Call your custom drawing method
+		draw(g, area, null);
+		// Return an updated y if needed
+		return y;
+	}
+
+	// Give the scale for drawing
+	private float getScale(Rectangle area) {
 		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
 	}
 
-	@Override
-	public int draw(Graphics graphics, int x, int y)
-	{
+	private int getComponentLevel(SlideComponent comp) {
+		if (comp instanceof SlideItem)
+			return ((SlideItem) comp).getLevel();
 		return 0;
 	}
 }
