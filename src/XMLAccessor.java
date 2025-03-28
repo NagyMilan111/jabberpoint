@@ -44,19 +44,18 @@ public class XMLAccessor extends Accessor {
     protected static final String PCE = "Parser Configuration Exception";
     protected static final String UNKNOWNTYPE = "Unknown Element type";
     protected static final String NFE = "Number Format Exception";
-    
-    
-    private String getTitle(Element element, String tagName) {
-    	NodeList titles = element.getElementsByTagName(tagName);
-    	return titles.item(0).getTextContent();
-    	
-    }
+
+
+	private String getTitle(Element element, String tagName) {
+		NodeList titles = element.getElementsByTagName(tagName);
+		return titles.item(0).getTextContent();
+	}
 
 	public void loadFile(Presentation presentation, String filename) throws IOException {
 		int slideNumber, itemNumber, max = 0, maxItems = 0;
 		try {
-			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();    
-			Document document = builder.parse(new File(filename)); // Create a JDOM document
+			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			Document document = builder.parse(new File(filename));
 			Element doc = document.getDocumentElement();
 			presentation.setTitle(getTitle(doc, SHOWTITLE));
 
@@ -67,7 +66,7 @@ public class XMLAccessor extends Accessor {
 				Slide slide = new Slide();
 				slide.setTitle(getTitle(xmlSlide, SLIDETITLE));
 				presentation.append(slide);
-				
+
 				NodeList slideItems = xmlSlide.getElementsByTagName(ITEM);
 				maxItems = slideItems.getLength();
 				for (itemNumber = 0; itemNumber < maxItems; itemNumber++) {
@@ -75,7 +74,7 @@ public class XMLAccessor extends Accessor {
 					loadSlideItem(slide, item);
 				}
 			}
-		} 
+		}
 		catch (IOException iox) {
 			System.err.println(iox.toString());
 		}
@@ -84,11 +83,11 @@ public class XMLAccessor extends Accessor {
 		}
 		catch (ParserConfigurationException pcx) {
 			System.err.println(PCE);
-		}	
+		}
 	}
 
 	protected void loadSlideItem(Slide slide, Element item) {
-		int level = 1; // default
+		int level = 1; // default level
 		NamedNodeMap attributes = item.getAttributes();
 		String leveltext = attributes.getNamedItem(LEVEL).getTextContent();
 		if (leveltext != null) {
@@ -101,23 +100,20 @@ public class XMLAccessor extends Accessor {
 		}
 		String type = attributes.getNamedItem(KIND).getTextContent();
 		if (TEXT.equals(type)) {
-			slide.append(new TextItem(level, item.getTextContent()));
+			// Use factory to create a text item with new constructor signature.
+			slide.append(SlideItemFactory.createSlideItem("text", level, Style.getStyle(level), item.getTextContent()));
+		}
+		else if (IMAGE.equals(type)) {
+			// Use factory to create a bitmap item.
+			slide.append(SlideItemFactory.createSlideItem("bitmap", level, Style.getStyle(level), item.getTextContent()));
 		}
 		else {
-			if (IMAGE.equals(type)) {
-				slide.append(new BitmapItem(level, item.getTextContent()));
-			}
-			else {
-				System.err.println(UNKNOWNTYPE);
-			}
+			System.err.println(UNKNOWNTYPE);
 		}
 	}
 
-
-	//Save the presentation in an XML format
+	// Save the presentation in XML format.
 	public void saveFile(Presentation presentation, String filename) throws IOException {
-
-		//Create the base of the XML format
 		PrintWriter out = new PrintWriter(new FileWriter(filename));
 		out.println("<?xml version=\"1.0\"?>");
 		out.println("<!DOCTYPE presentation SYSTEM \"jabberpoint.dtd\">");
@@ -126,29 +122,28 @@ public class XMLAccessor extends Accessor {
 		out.print(presentation.getTitle());
 		out.println("</showtitle>");
 
-		//Write the slides to the XML format
-		for (int slideNumber=0; slideNumber<presentation.getSize(); slideNumber++) {
+		// Write each slide.
+		for (int slideNumber = 0; slideNumber < presentation.getSize(); slideNumber++) {
 			Slide slide = presentation.getSlide(slideNumber);
 			out.println("<slide>");
 			out.println("<title>" + slide.getTitle() + "</title>");
-			Vector<SlideItem> slideItems = slide.getSlideItems();
+			// Use Vector<SlideComponent> instead of Vector<SlideItem>
+			Vector<SlideComponent> slideComponents = slide.getSlideItems();
 
-			//Write the slides' items the XML format
-			for (int itemNumber = 0; itemNumber<slideItems.size(); itemNumber++) {
-				SlideItem slideItem = (SlideItem) slideItems.elementAt(itemNumber);
-				out.print("<item kind="); 
-				if (slideItem instanceof TextItem) {
-					out.print("\"text\" level=\"" + slideItem.getLevel() + "\">");
-					out.print( ( (TextItem) slideItem).getText());
+			// Write each slide component.
+			for (int itemNumber = 0; itemNumber < slideComponents.size(); itemNumber++) {
+				SlideComponent comp = slideComponents.elementAt(itemNumber);
+				out.print("<item kind=");
+				if (comp instanceof TextItem) {
+					out.print("\"text\" level=\"" + ((TextItem) comp).getLevel() + "\">");
+					out.print(((TextItem) comp).getText());
+				}
+				else if (comp instanceof BitmapItem) {
+					out.print("\"image\" level=\"" + ((BitmapItem) comp).getLevel() + "\">");
+					out.print(((BitmapItem) comp).getName());
 				}
 				else {
-					if (slideItem instanceof BitmapItem) {
-						out.print("\"image\" level=\"" + slideItem.getLevel() + "\">");
-						out.print( ( (BitmapItem) slideItem).getName());
-					}
-					else {
-						System.out.println("Ignoring " + slideItem);
-					}
+					System.out.println("Ignoring " + comp);
 				}
 				out.println("</item>");
 			}
