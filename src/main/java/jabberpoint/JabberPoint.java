@@ -1,5 +1,9 @@
 package jabberpoint;
 
+import jabberpoint.commands.ExitApplicationCommand;
+import jabberpoint.commands.NextSlideCommand;
+import jabberpoint.commands.PreviousSlideCommand;
+
 import javax.swing.JOptionPane;
 
 import java.io.IOException;
@@ -29,7 +33,8 @@ public class JabberPoint {
 		CommandInvoker invoker = new CommandInvoker();
 		Style.createStyles();
 		Presentation presentation = new Presentation();
-		new SlideViewerFrame(JABVERSION, presentation, invoker);
+		SlideViewerFrame frame = new SlideViewerFrame(JABVERSION, presentation);
+
 
 		try {
 			if (argv.length == 0) { //a demo presentation if no arguments

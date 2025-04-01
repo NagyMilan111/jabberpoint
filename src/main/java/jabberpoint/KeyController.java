@@ -41,7 +41,6 @@ public class KeyController extends KeyAdapter {
 			case 'q':
 			case 'Q':
 				invoker.executeCommand(EXIT, null);
-				break; // Probably never reached!!
 			default:
 				break;
 		}

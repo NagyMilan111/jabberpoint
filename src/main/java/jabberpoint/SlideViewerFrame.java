@@ -25,17 +25,17 @@ public class SlideViewerFrame extends JFrame {
 
 	private Presentation presentation;
 	
-	public SlideViewerFrame(String title, Presentation presentation, CommandInvoker invoker) {
+	public SlideViewerFrame(String title, Presentation presentation) {
 		super(title);
 		this.presentation = presentation;
 		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
 		presentation.setShowView(slideViewerComponent);
-		setupWindow(slideViewerComponent, invoker);
+		setupWindow(slideViewerComponent);
 	}
 
 // Setup GUI
 	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent, CommandInvoker invoker) {
+			slideViewerComponent) {
 		setTitle(JABTITLE);
 		addWindowListener(new WindowAdapter() {
 				public void windowClosing(WindowEvent e) {
@@ -43,10 +43,13 @@ public class SlideViewerFrame extends JFrame {
 				}
 			});
 		getContentPane().add(slideViewerComponent);
-		addKeyListener(new KeyController(this, invoker)); // add a controller
-		setMenuBar(new MenuController(this, invoker));	// add another controller
 		setSize(new Dimension(WIDTH, HEIGHT)); // Same sizes as jabberpoint.Slide has.
 		setVisible(true);
+	}
+
+	public void setupControllers(CommandInvoker invoker){
+		addKeyListener(new KeyController(this, invoker)); // add a controller
+		setMenuBar(new MenuController(this, invoker));	// add another controller
 	}
 
 	public Presentation getPresentation()
@@ -58,4 +61,6 @@ public class SlideViewerFrame extends JFrame {
 	{
 		this.presentation = presentation;
 	}
+
+
 }
