@@ -1,5 +1,7 @@
 package jabberpoint;
 
+import jabberpoint.commands.AboutBoxCommand;
+
 import java.awt.MenuBar;
 import java.awt.Frame;
 import java.awt.Menu;
@@ -137,7 +139,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-
+                invoker.executeCommand(ABOUT, null);
             }
         });
         setHelpMenu(helpMenu);        // needed for portability (Motif, etc.).
