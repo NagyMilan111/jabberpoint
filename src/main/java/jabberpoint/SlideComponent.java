@@ -1,3 +1,5 @@
+package jabberpoint;
+
 import java.awt.*;
 
 public interface SlideComponent
