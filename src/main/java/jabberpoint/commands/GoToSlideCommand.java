@@ -27,36 +27,48 @@ import jabberpoint.SlideViewerFrameController;
 
 import javax.swing.*;
 
-public class GoToSlideCommand extends SlideViewerFrameController {
+public class GoToSlideCommand extends SlideViewerFrameController
+{
 
-    public GoToSlideCommand(SlideViewerFrame frame) {
+    public GoToSlideCommand(SlideViewerFrame frame)
+    {
         super(frame);
     }
 
     @Override
-    public void execute(Integer slideNumber) {
-        Presentation presentation = frame.getPresentation();
+    public void execute()
+    {
+        Presentation presentation = this.frame.getPresentation();
 
-        // If no slideNumber provided, prompt user:
-        if (slideNumber == null) {
-            String input = JOptionPane.showInputDialog(frame, "Enter slide number:");
-            if (input != null) {
-                try {
-                    slideNumber = Integer.parseInt(input) - 1;
-                } catch (NumberFormatException e) {
-                    JOptionPane.showMessageDialog(frame, "Please enter a valid number.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-                    return;
-                }
-            } else {
-                return; // user cancelled
+        Integer slideNumber;
+
+        String input = JOptionPane.showInputDialog(this.frame, "Enter slide number:");
+        if (input != null)
+        {
+            try
+            {
+                slideNumber = Integer.parseInt(input) - 1;
+            }
+            catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(this.frame, "Please enter a valid number.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+                return;
             }
         }
+        else
+        {
+            return; // user cancelled
+        }
 
-        if (slideNumber >= 0 && slideNumber < presentation.getSize()) {
+
+        if (slideNumber >= 0 && slideNumber < presentation.getSize())
+        {
             presentation.setSlideNumber(slideNumber);
-            frame.repaint();
-        } else {
-            JOptionPane.showMessageDialog(frame, "Invalid slide number.", "Error", JOptionPane.ERROR_MESSAGE);
+            this.frame.repaint();
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(this.frame, "Invalid slide number.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

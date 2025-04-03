@@ -11,15 +11,15 @@ public class CommandInvoker
         this.commands = new HashMap<>();
     }
 
-    public void executeCommand(String action, Integer slideNumber)
+    public void executeCommand(String action)
     {
         if ("Goto".equals(action) && this.commands.containsKey(action))
         {
-            this.commands.get(action).execute(slideNumber);
+            this.commands.get(action).execute();
         }
         else if (this.commands.containsKey(action))
         {
-            this.commands.get(action).execute(null);
+            this.commands.get(action).execute();
         }
     }
 

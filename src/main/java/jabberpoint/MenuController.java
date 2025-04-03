@@ -9,10 +9,6 @@ import static jabberpoint.Constants.*;
 public class MenuController extends MenuBar
 {
 
-
-
-    private static final long serialVersionUID = 227L;
-
     private final SlideViewerFrame parent;
     private final CommandInvoker invoker;
 
@@ -30,7 +26,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(OPEN, null);
+                MenuController.this.invoker.executeCommand(OPEN);
             }
         });
 
@@ -40,7 +36,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(NEW, null);
+                MenuController.this.invoker.executeCommand(NEW);
             }
         });
 
@@ -50,7 +46,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent e)
             {
-                MenuController.this.invoker.executeCommand(SAVE, null);
+                MenuController.this.invoker.executeCommand(SAVE);
             }
         });
 
@@ -61,7 +57,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(EXIT, null);
+                MenuController.this.invoker.executeCommand(EXIT);
             }
         });
 
@@ -76,7 +72,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(NEXT, null);
+                MenuController.this.invoker.executeCommand(NEXT);
             }
         });
 
@@ -86,7 +82,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(PREV, null);
+                MenuController.this.invoker.executeCommand(PREV);
             }
         });
 
@@ -96,7 +92,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(GOTO, null);
+                MenuController.this.invoker.executeCommand(GOTO);
             }
         });
 
@@ -109,7 +105,7 @@ public class MenuController extends MenuBar
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                MenuController.this.invoker.executeCommand(ABOUT, null);
+                MenuController.this.invoker.executeCommand(ABOUT);
             }
         });
 

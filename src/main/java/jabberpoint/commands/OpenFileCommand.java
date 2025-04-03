@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import static jabberpoint.Constants.IOEX;
 import static jabberpoint.Constants.LOADERR;
-import static jabberpoint.MenuController.*;
 
 public class OpenFileCommand extends SlideViewerFrameController
 {
@@ -21,7 +20,7 @@ public class OpenFileCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber) {
+    public void execute() {
         // Let the user choose an XML file to open
         JFileChooser fileChooser = new JFileChooser();
         if (fileChooser.showOpenDialog(frame) == JFileChooser.APPROVE_OPTION) {

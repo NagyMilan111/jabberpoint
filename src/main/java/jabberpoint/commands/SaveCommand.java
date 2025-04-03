@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.io.IOException;
 
 import static jabberpoint.Constants.*;
-import static jabberpoint.MenuController.*;
 
 public class SaveCommand extends SlideViewerFrameController
 {
@@ -20,7 +19,7 @@ public class SaveCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         Accessor xmlAccessor = new XMLAccessor();
         try

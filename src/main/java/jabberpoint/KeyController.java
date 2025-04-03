@@ -4,7 +4,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import static jabberpoint.Constants.*;
-import static jabberpoint.MenuController.*;
 
 /**
  * <p>This is the jabberpoint.KeyController (KeyListener)</p>
@@ -34,16 +33,16 @@ public class KeyController extends KeyAdapter
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_ENTER:
             case '+':
-                invoker.executeCommand(NEXT, null);
+                invoker.executeCommand(NEXT);
                 break;
             case KeyEvent.VK_PAGE_UP:
             case KeyEvent.VK_UP:
             case '-':
-                invoker.executeCommand(PREV, null);
+                invoker.executeCommand(PREV);
                 break;
             case 'q':
             case 'Q':
-                invoker.executeCommand(EXIT, null);
+                invoker.executeCommand(EXIT);
             default:
                 break;
         }

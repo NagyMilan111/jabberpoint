@@ -11,7 +11,7 @@ public class NextSlideCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         frame.getPresentation().nextSlide();
     }

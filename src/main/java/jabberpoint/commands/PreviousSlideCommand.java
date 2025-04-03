@@ -11,7 +11,7 @@ public class PreviousSlideCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         this.frame.getPresentation().prevSlide();
     }

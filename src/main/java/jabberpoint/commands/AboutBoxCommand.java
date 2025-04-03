@@ -12,7 +12,7 @@ public class AboutBoxCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         AboutBox.show(frame);
     }
