@@ -106,7 +106,8 @@ public class Presentation
         {
             return null; //this should probably return an error message instead tbh
         }
-        return (Slide) showList.get(number);
+
+        return showList.get(number);
     }
 
     // Give the current slide

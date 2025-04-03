@@ -8,11 +8,13 @@ public class CommandInvoker
 
     public CommandInvoker()
     {
-        commands = new HashMap<>();
+        this.commands = new HashMap<>();
     }
 
-    public void executeCommand(String action, Integer slideNumber) {
-        if (commands.containsKey(action)) {
+    public void executeCommand(String action, Integer slideNumber)
+    {
+        if (this.commands.containsKey(action))
+        {
             commands.get(action).execute(null);
         }
         else if (action.equals("GOTO") && commands.containsKey(action))

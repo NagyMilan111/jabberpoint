@@ -1,66 +1,61 @@
 package jabberpoint;
 
-import java.awt.Dimension;
-import java.awt.event.WindowEvent;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.WindowAdapter;
-import javax.swing.JFrame;
+import java.awt.event.WindowEvent;
 
 /**
- * <p>The application window for a slideviewcomponent</p>
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
-*/
-
+ * The main application window for JabberPoint.
+ */
 public class SlideViewerFrame extends JFrame {
-	private static final long serialVersionUID = 3227L;
-	
-	private static final String JABTITLE = "Jabberpoint 1.6 - OU";
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
 
-	private Presentation presentation;
-	
-	public SlideViewerFrame(String title, Presentation presentation) {
-		super(title);
-		this.presentation = presentation;
-		SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
-		presentation.setShowView(slideViewerComponent);
-		setupWindow(slideViewerComponent);
-	}
+    public static final int WIDTH = 1200;
+    public static final int HEIGHT = 800;
+    private static final long serialVersionUID = 3227L;
+    private static final String JABTITLE = "JabberPoint - Presentation Viewer";
+    private Presentation presentation;
 
-// Setup GUI
-	public void setupWindow(SlideViewerComponent 
-			slideViewerComponent) {
-		setTitle(JABTITLE);
-		addWindowListener(new WindowAdapter() {
-				public void windowClosing(WindowEvent e) {
-					System.exit(0);
-				}
-			});
-		getContentPane().add(slideViewerComponent);
-		setSize(new Dimension(WIDTH, HEIGHT)); // Same sizes as jabberpoint.Slide has.
-		setVisible(true);
-	}
+    public SlideViewerFrame(String title, Presentation presentation) {
+        super(title);
+        this.presentation = presentation;
+        SlideViewerComponent slideViewerComponent = new SlideViewerComponent(presentation, this);
+        presentation.setShowView(slideViewerComponent);
+        setupWindow(slideViewerComponent);
+    }
 
-	public void setupControllers(CommandInvoker invoker){
-		addKeyListener(new KeyController(this, invoker)); // add a controller
-		setMenuBar(new MenuController(this, invoker));	// add another controller
-	}
+    public void setupWindow(SlideViewerComponent slideViewerComponent) {
+        setTitle(JABTITLE);
 
-	public Presentation getPresentation()
-	{
-		return this.presentation;
-	}
+        // Optional: Set application icon (icon must exist)
+        try {
+            ImageIcon icon = new ImageIcon("resources/icon.png"); // path to your icon
+            setIconImage(icon.getImage());
+        } catch (Exception e) {
+            System.err.println("Icon not found or failed to load.");
+        }
 
-	public void setPresentation(Presentation presentation)
-	{
-		this.presentation = presentation;
-	}
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
 
+        getContentPane().add(slideViewerComponent);
+        setSize(new Dimension(WIDTH, HEIGHT));
+        setVisible(true);
+    }
 
+    public void setupControllers(CommandInvoker invoker) {
+        addKeyListener(new KeyController(this, invoker));
+        setMenuBar(new MenuController(this, invoker));
+    }
+
+    public Presentation getPresentation() {
+        return this.presentation;
+    }
+
+    public void setPresentation(Presentation presentation) {
+        this.presentation = presentation;
+    }
 }

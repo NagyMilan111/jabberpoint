@@ -5,9 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0574c4ee-872b-4cb7-8ca8-9741dc305d90" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/XMLAccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/AboutBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/AboutBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItemFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/AboutBoxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/AboutBoxCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/jabberpoint/KeyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/jabberpoint/KeyControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/jabberpoint/PresentationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/jabberpoint/PresentationTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +62,13 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.JabberPoint.executor&quot;: &quot;Run&quot;,
+    &quot;Application.jabberpoint.JabberPoint.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jabberpoint [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jabberpoint [compile].executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;factory-composite&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;command-pattern-with-maven&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/NHL/app/public/SoftwareQuality/jabberpoint&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -52,10 +79,11 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.jabberpoint.JabberPoint">
     <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JabberPoint" />
       <module name="jabberpoint" />
@@ -63,8 +91,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="jabberpoint.JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="jabberpoint.JabberPoint" />
+      <module name="jabberpoint" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="jabberpoint.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.jabberpoint.JabberPoint" />
         <item itemvalue="Application.JabberPoint" />
       </list>
     </recent_temporary>
@@ -72,8 +114,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.26053.27" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.26053.27" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -92,6 +134,8 @@
       <workItem from="1742995776679" duration="2088000" />
       <workItem from="1743170586550" duration="1984000" />
       <workItem from="1743173147866" duration="336000" />
+      <workItem from="1743664090095" duration="7657000" />
+      <workItem from="1743673158966" duration="1420000" />
     </task>
     <servers />
   </component>

@@ -22,9 +22,11 @@ public class SaveCommand extends SlideViewerFrameController
     public void execute(Integer slideNumber)
     {
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.saveFile(this.frame.getPresentation(), SAVEFILE);
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(this.frame, IOEX + exc,
                     SAVEERR, JOptionPane.ERROR_MESSAGE);
         }

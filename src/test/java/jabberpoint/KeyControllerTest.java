@@ -6,11 +6,10 @@ import jabberpoint.commands.PreviousSlideCommand;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KeyControllerTest
 {
@@ -18,7 +17,6 @@ class KeyControllerTest
     private CommandInvoker invoker;
     private Presentation presentation;
     private SlideViewerFrame frame;
-
 
 
     @BeforeEach
@@ -31,8 +29,7 @@ class KeyControllerTest
         {
             Accessor.getDemoAccessor().loadFile(this.presentation, "");
 
-        }
-        catch (IOException exception)
+        } catch (IOException exception)
         {
             System.out.println("Something went wrong while trying to load the demo");
         }

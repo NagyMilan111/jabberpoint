@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PresentationTest
 {
@@ -27,8 +27,7 @@ class PresentationTest
         {
             Accessor.getDemoAccessor().loadFile(this.presentation, "");
 
-        }
-        catch (IOException exception)
+        } catch (IOException exception)
         {
             System.out.println("Something went wrong while trying to load the demo");
         }

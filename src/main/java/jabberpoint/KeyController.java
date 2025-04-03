@@ -1,48 +1,49 @@
 package jabberpoint;
 
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import static jabberpoint.MenuController.*;
 
-/** <p>This is the jabberpoint.KeyController (KeyListener)</p>
+/**
+ * <p>This is the jabberpoint.KeyController (KeyListener)</p>
+ *
  * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
  * @version 1.6 2014/05/16 Sylvia Stuurman
-*/
+ */
 
-public class KeyController extends KeyAdapter {
-	private SlideViewerFrame frame; //This is probably supposed to be a singleton, but isn't
-	private CommandInvoker invoker;
+public class KeyController extends KeyAdapter
+{
+    private final SlideViewerFrame frame; //This is probably supposed to be a singleton, but isn't
+    private final CommandInvoker invoker;
 
-	public KeyController(SlideViewerFrame frame, CommandInvoker invoker) {
-		this.frame = frame;
-		this.invoker = invoker;
-	}
+    public KeyController(SlideViewerFrame frame, CommandInvoker invoker)
+    {
+        this.frame = frame;
+        this.invoker = invoker;
+    }
 
-	//there are undocumented key combinations here? why? probably a bug
-	public void keyPressed(KeyEvent keyEvent) {
-		switch(keyEvent.getKeyCode()) {
-			case KeyEvent.VK_PAGE_DOWN:
-			case KeyEvent.VK_DOWN:
-			case KeyEvent.VK_ENTER:
-			case '+':
-				invoker.executeCommand(NEXT, null);
-				break;
-			case KeyEvent.VK_PAGE_UP:
-			case KeyEvent.VK_UP:
-			case '-':
-				invoker.executeCommand(PREV, null);
-				break;
-			case 'q':
-			case 'Q':
-				invoker.executeCommand(EXIT, null);
-			default:
-				break;
-		}
-	}
+    //there are undocumented key combinations here? why? probably a bug
+    public void keyPressed(KeyEvent keyEvent)
+    {
+        switch (keyEvent.getKeyCode())
+        {
+            case KeyEvent.VK_PAGE_DOWN:
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_ENTER:
+            case '+':
+                invoker.executeCommand(NEXT, null);
+                break;
+            case KeyEvent.VK_PAGE_UP:
+            case KeyEvent.VK_UP:
+            case '-':
+                invoker.executeCommand(PREV, null);
+                break;
+            case 'q':
+            case 'Q':
+                invoker.executeCommand(EXIT, null);
+            default:
+                break;
+        }
+    }
 }

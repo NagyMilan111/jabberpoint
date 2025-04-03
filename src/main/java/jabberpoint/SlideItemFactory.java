@@ -1,14 +1,11 @@
 package jabberpoint;
 
-import jabberpoint.SlideItem;
-import jabberpoint.Style;
-import jabberpoint.TextItem;
-import jabberpoint.BitmapItem;
-
 public class SlideItemFactory
 {
-    public static SlideItem createSlideItem(String type, int level, Style style, String content) {
-        switch (type.toLowerCase()) {
+    public static SlideItem createSlideItem(String type, int level, Style style, String content)
+    {
+        switch (type.toLowerCase())
+        {
             case "text":
                 return new TextItem(level, style, content);
             case "bitmap":

@@ -1,6 +1,6 @@
 package jabberpoint;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public abstract class SlideViewerFrameController implements Command
 {
@@ -9,7 +9,7 @@ public abstract class SlideViewerFrameController implements Command
 
     public SlideViewerFrameController(SlideViewerFrame frame)
     {
-     this.frame = frame;
+        this.frame = frame;
     }
 
     public JFrame getFrame()

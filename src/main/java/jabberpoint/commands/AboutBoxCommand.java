@@ -1,6 +1,8 @@
 package jabberpoint.commands;
 
-import jabberpoint.*;
+import jabberpoint.AboutBox;
+import jabberpoint.SlideViewerFrame;
+import jabberpoint.SlideViewerFrameController;
 
 public class AboutBoxCommand extends SlideViewerFrameController
 {
