@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
+import static jabberpoint.Constants.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KeyControllerTest
@@ -35,10 +36,10 @@ class KeyControllerTest
         }
 
         this.invoker = new CommandInvoker();
-        this.frame = new SlideViewerFrame("TEST VERSION", this.presentation);
-        this.invoker.addCommand("Next", new NextSlideCommand(this.frame));
-        this.invoker.addCommand("Prev", new PreviousSlideCommand(this.frame));
-        this.invoker.addCommand("Exit", new ExitApplicationCommand(this.frame));
+        this.frame = new SlideViewerFrame(JABVERSION, this.presentation);
+        this.invoker.addCommand(NEXT, new NextSlideCommand(this.frame));
+        this.invoker.addCommand(PREV, new PreviousSlideCommand(this.frame));
+        this.invoker.addCommand(EXIT, new ExitApplicationCommand(this.frame));
         this.frame.setupControllers(this.invoker);
         this.keyController = new KeyController(this.frame, this.invoker);
 
