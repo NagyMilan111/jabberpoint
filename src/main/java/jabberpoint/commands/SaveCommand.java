@@ -8,6 +8,7 @@ import jabberpoint.XMLAccessor;
 import javax.swing.*;
 import java.io.IOException;
 
+import static jabberpoint.Constants.*;
 import static jabberpoint.MenuController.*;
 
 public class SaveCommand extends SlideViewerFrameController

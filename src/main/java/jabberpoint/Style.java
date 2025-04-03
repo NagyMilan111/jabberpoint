@@ -2,13 +2,15 @@ package jabberpoint;
 
 import java.awt.*;
 
+import static jabberpoint.Constants.FONT_NAME;
+
 /**
  * Style represents visual layout properties like indent, color, font size, and line spacing (leading).
  * Each level of slide item (0–4) has a corresponding style.
  */
 public class Style
 {
-    private static final String FONT_NAME = "Helvetica";
+
     private static Style[] styles;
 
     int indent;

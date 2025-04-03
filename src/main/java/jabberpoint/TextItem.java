@@ -11,6 +11,9 @@ import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jabberpoint.Constants.EMPTY_TEXT;
+import static jabberpoint.Constants.SLIDEWIDTH;
+
 /**
  * A TextItem represents a block of text in a slide.
  * It has drawing functionality and formatting styles.
@@ -18,7 +21,6 @@ import java.util.List;
 public class TextItem extends SlideItem
 {
 
-    private static final String EMPTY_TEXT = "No Text Given";
     private final String text;
 
     // A text item with a given level, style, and content
@@ -91,7 +93,7 @@ public class TextItem extends SlideItem
         FontRenderContext frc = g2d.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-        float wrappingWidth = (Slide.WIDTH - style.indent) * scale;
+        float wrappingWidth = (SLIDEWIDTH - style.indent) * scale;
 
         while (measurer.getPosition() < this.getText().length())
         {

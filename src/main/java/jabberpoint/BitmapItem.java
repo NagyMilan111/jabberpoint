@@ -7,14 +7,16 @@ import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
+import static jabberpoint.Constants.FILE;
+import static jabberpoint.Constants.NOT_FOUND;
+
 /**
  * <p>The class for a Bitmap item.</p>
  * <p>Bitmap items have the responsibility to draw themselves.</p>
  */
 public class BitmapItem extends SlideItem
 {
-    protected static final String FILE = "File ";
-    protected static final String NOT_FOUND = " not found";
+
 
     private final String imageName;
     private BufferedImage bufferedImage;

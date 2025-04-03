@@ -4,26 +4,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static jabberpoint.Constants.*;
+
 public class MenuController extends MenuBar
 {
 
-    public static final String ABOUT = "About";
-    public static final String FILE = "File";
-    public static final String EXIT = "Exit";
-    public static final String GOTO = "Goto";
-    public static final String HELP = "Help";
-    public static final String NEW = "New";
-    public static final String NEXT = "Next";
-    public static final String OPEN = "Open";
-    public static final String PAGENR = "Page number?";
-    public static final String PREV = "Prev";
-    public static final String SAVE = "Save";
-    public static final String VIEW = "View";
-    public static final String TESTFILE = "test.xml";
-    public static final String SAVEFILE = "dump.xml";
-    public static final String IOEX = "IO Exception: ";
-    public static final String LOADERR = "Load Error";
-    public static final String SAVEERR = "Save Error";
+
 
     private static final long serialVersionUID = 227L;
 

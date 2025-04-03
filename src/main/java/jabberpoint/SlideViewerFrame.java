@@ -5,16 +5,13 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import static jabberpoint.Constants.*;
+
 /**
  * The main application window for JabberPoint.
  */
 public class SlideViewerFrame extends JFrame
 {
-
-    public static final int WIDTH = 1200;
-    public static final int HEIGHT = 800;
-    private static final long serialVersionUID = 3227L;
-    private static final String JABTITLE = "JabberPoint - Presentation Viewer";
 
     private Presentation presentation;
 
@@ -53,7 +50,7 @@ public class SlideViewerFrame extends JFrame
         });
 
         this.getContentPane().add(slideViewerComponent);
-        this.setSize(new Dimension(WIDTH, HEIGHT));
+        this.setSize(new Dimension(SLIDEWIDTH, SLIDEHEIGHT));
         this.setVisible(true);
     }
 

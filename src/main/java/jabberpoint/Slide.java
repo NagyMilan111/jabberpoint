@@ -4,13 +4,15 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.util.Vector;
 
+import static jabberpoint.Constants.SLIDEHEIGHT;
+import static jabberpoint.Constants.SLIDEWIDTH;
+
 /**
  * A Slide. This class has drawing functionality.
  */
 public class Slide implements SlideComponent
 {
-    public static final int WIDTH = 1200;
-    public static final int HEIGHT = 800;
+
 
     protected String title;
     protected Vector<SlideComponent> components;
@@ -79,14 +81,14 @@ public class Slide implements SlideComponent
     @Override
     public int draw(Graphics g, int x, int y)
     {
-        Rectangle area = new Rectangle(x, y, Slide.WIDTH, Slide.HEIGHT);
+        Rectangle area = new Rectangle(x, y, SLIDEWIDTH, SLIDEHEIGHT);
         this.draw(g, area, null);
         return y;
     }
 
     private float getScale(Rectangle area)
     {
-        return Math.min(((float) area.width) / Slide.WIDTH, ((float) area.height) / Slide.HEIGHT);
+        return Math.min(((float) area.width) / SLIDEWIDTH, ((float) area.height) / SLIDEHEIGHT);
     }
 
     private int getComponentLevel(SlideComponent comp)

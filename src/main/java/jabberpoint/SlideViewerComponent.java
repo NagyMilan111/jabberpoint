@@ -3,18 +3,17 @@ package jabberpoint;
 import javax.swing.*;
 import java.awt.*;
 
+import static jabberpoint.Constants.*;
+
 /**
  * SlideViewerComponent is a graphical component that can show slides.
  */
 public class SlideViewerComponent extends JComponent
 {
 
-    private static final long serialVersionUID = 227L;
-    private static final Color BGCOLOR = Color.white;
-
     private Slide slide; // current slide
-    private Presentation presentation = null;
-    private JFrame frame = null;
+    private Presentation presentation;
+    private JFrame frame;
 
     public SlideViewerComponent(Presentation pres, JFrame frame)
     {
@@ -26,7 +25,7 @@ public class SlideViewerComponent extends JComponent
     @Override
     public Dimension getPreferredSize()
     {
-        return new Dimension(Slide.WIDTH, Slide.HEIGHT);
+        return new Dimension(SLIDEWIDTH, SLIDEHEIGHT);
     }
 
     public void update(Presentation presentation, Slide data)

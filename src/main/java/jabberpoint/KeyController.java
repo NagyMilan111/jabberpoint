@@ -3,6 +3,7 @@ package jabberpoint;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import static jabberpoint.Constants.*;
 import static jabberpoint.MenuController.*;
 
 /**

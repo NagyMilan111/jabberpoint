@@ -59,12 +59,11 @@ import jabberpoint.commands.*;
 import javax.swing.*;
 import java.io.IOException;
 
+import static jabberpoint.Constants.*;
+
 public class JabberPoint
 {
 
-    private static final String IOERR = "IO Error: ";
-    private static final String JABERR = "JabberPoint Error";
-    private static final String JABVERSION = "JabberPoint 1.6 - OU";
 
     public static void main(String[] args)
     {

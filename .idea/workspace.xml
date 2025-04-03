@@ -5,26 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0574c4ee-872b-4cb7-8ca8-9741dc305d90" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/MenuController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/SlideViewerComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/SlideViewerComponent.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/Style.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/Style.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/commands/GoToSlideCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/commands/GoToSlideCommand.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +36,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 2
@@ -53,31 +51,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.JabberPoint.executor&quot;: &quot;Run&quot;,
-    &quot;Application.jabberpoint.JabberPoint.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.jabberpoint [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.jabberpoint [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;command-pattern-with-maven&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/NHL/app/public/SoftwareQuality/jabberpoint&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.JabberPoint.executor": "Run",
+    "Application.jabberpoint.JabberPoint.executor": "Run",
+    "JUnit.KeyControllerTest.executor": "Run",
+    "Maven.jabberpoint [clean].executor": "Run",
+    "Maven.jabberpoint [compile].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "command-pattern-with-maven",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Danubius/Documents/jabberpoint-maven/jabberpoint",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager" selected="Application.jabberpoint.JabberPoint">
+}]]></component>
+  <component name="RunManager">
     <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JabberPoint" />
       <module name="jabberpoint" />
@@ -105,14 +105,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -130,6 +122,8 @@
       <workItem from="1743173147866" duration="336000" />
       <workItem from="1743664090095" duration="7657000" />
       <workItem from="1743673158966" duration="4583000" />
+      <workItem from="1743704115405" duration="746000" />
+      <workItem from="1743704872581" duration="886000" />
     </task>
     <servers />
   </component>
