@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0574c4ee-872b-4cb7-8ca8-9741dc305d90" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/AboutBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/AboutBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/CommandInvoker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/DemoPresentation.java" afterDir="false" />
@@ -18,19 +15,16 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Presentation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItemFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideItemFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/AboutBoxCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/AboutBoxCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/GoToSlideCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/jabberpoint/KeyControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/jabberpoint/KeyControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/jabberpoint/PresentationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/jabberpoint/PresentationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/SlideViewerComponent.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/SlideViewerComponent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/Style.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/Style.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/jabberpoint/commands/GoToSlideCommand.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/jabberpoint/commands/GoToSlideCommand.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +129,7 @@
       <workItem from="1743170586550" duration="1984000" />
       <workItem from="1743173147866" duration="336000" />
       <workItem from="1743664090095" duration="7657000" />
-      <workItem from="1743673158966" duration="1420000" />
+      <workItem from="1743673158966" duration="4583000" />
     </task>
     <servers />
   </component>

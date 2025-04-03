@@ -12,51 +12,46 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>A tekst item.</p>
- * <p>A jabberpoint.TextItem has drawingfunctionality.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+ * A TextItem represents a block of text in a slide.
+ * It has drawing functionality and formatting styles.
  */
-
 public class TextItem extends SlideItem
 {
+
     private static final String EMPTY_TEXT = "No Text Given";
     private final String text;
 
-    // a textitem of level level, with the text string
+    // A text item with a given level, style, and content
     public TextItem(int level, Style style, String text)
     {
         super(level, style);
         this.text = text;
     }
 
-    // an empty textitem
+    // An empty text item
     public TextItem()
     {
         this(0, Style.getStyle(0), EMPTY_TEXT);
     }
 
-    // give the text
     public String getText()
     {
-        return text == null ? "" : text;
+        return this.text == null ? "" : this.text;
     }
 
-    // geef de AttributedString voor het item
     public AttributedString getAttributedString(Style style, float scale)
     {
-        AttributedString attrStr = new AttributedString(getText());
-        attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, getText().length());
+        AttributedString attrStr = new AttributedString(this.getText());
+        attrStr.addAttribute(TextAttribute.FONT, style.getFont(scale), 0, this.getText().length());
         return attrStr;
     }
 
-    // give the bounding box of the item
     @Override
     public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
     {
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale);
-        int xsize = 0, ysize = (int) (myStyle.leading * scale);
+        List<TextLayout> layouts = this.getLayouts(g, myStyle, scale);
+        int xsize = 0;
+        int ysize = (int) (myStyle.leading * scale);
 
         for (TextLayout layout : layouts)
         {
@@ -68,13 +63,12 @@ public class TextItem extends SlideItem
         return new Rectangle((int) (myStyle.indent * scale), 0, xsize, ysize);
     }
 
-    // draw the item
     @Override
     public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
     {
-        if (getText().isEmpty()) return;
+        if (this.getText().isEmpty()) return;
 
-        List<TextLayout> layouts = getLayouts(g, myStyle, scale);
+        List<TextLayout> layouts = this.getLayouts(g, myStyle, scale);
 
         Point pen = new Point(x + (int) (myStyle.indent * scale), y + (int) (myStyle.leading * scale));
         Graphics2D g2d = (Graphics2D) g;
@@ -88,19 +82,18 @@ public class TextItem extends SlideItem
         }
     }
 
-    private List<TextLayout> getLayouts(Graphics g, Style s, float scale)
+    private List<TextLayout> getLayouts(Graphics g, Style style, float scale)
     {
         List<TextLayout> layouts = new ArrayList<>();
 
-        AttributedString attrStr = getAttributedString(s, scale);
+        AttributedString attrStr = this.getAttributedString(style, scale);
         Graphics2D g2d = (Graphics2D) g;
         FontRenderContext frc = g2d.getFontRenderContext();
         LineBreakMeasurer measurer = new LineBreakMeasurer(attrStr.getIterator(), frc);
 
-        // Assume Slide.WIDTH is defined; adjust wrappingWidth as needed.
-        float wrappingWidth = (Slide.WIDTH - s.indent) * scale;
+        float wrappingWidth = (Slide.WIDTH - style.indent) * scale;
 
-        while (measurer.getPosition() < getText().length())
+        while (measurer.getPosition() < this.getText().length())
         {
             TextLayout layout = measurer.nextLayout(wrappingWidth);
             layouts.add(layout);
@@ -109,8 +102,9 @@ public class TextItem extends SlideItem
         return layouts;
     }
 
+    @Override
     public String toString()
     {
-        return "jabberpoint.TextItem[" + getLevel() + "," + getText() + "]";
+        return "TextItem[" + this.getLevel() + "," + this.getText() + "]";
     }
 }

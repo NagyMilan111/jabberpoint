@@ -24,6 +24,7 @@ public class KeyController extends KeyAdapter
     }
 
     //there are undocumented key combinations here? why? probably a bug
+    @Override
     public void keyPressed(KeyEvent keyEvent)
     {
         switch (keyEvent.getKeyCode())

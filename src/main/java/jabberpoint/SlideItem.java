@@ -4,16 +4,12 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 
 /**
- * <p>The abstract class for an item on a slide<p>
- * <p>All SlideItems have drawingfunctionality.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+ * The abstract base class for an item on a slide.
+ * All SlideItems have drawing functionality.
  */
-
 public abstract class SlideItem implements SlideComponent
 {
-    private int level = 0; // level of the slideitem
+    private int level = 0; // level of the slide item
     private Style style;
 
     public SlideItem(int level, Style style)
@@ -30,10 +26,9 @@ public abstract class SlideItem implements SlideComponent
         this(0, Style.getStyle(0));
     }
 
-    // Give the level
     public int getLevel()
     {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level)
@@ -43,7 +38,7 @@ public abstract class SlideItem implements SlideComponent
 
     public Style getStyle()
     {
-        return style;
+        return this.style;
     }
 
     public void setStyle(Style style)
@@ -51,20 +46,20 @@ public abstract class SlideItem implements SlideComponent
         this.style = style;
     }
 
-    // Give the bounding box
     public abstract Rectangle getBoundingBox(Graphics g,
-                                             ImageObserver observer, float scale, Style style);
+                                             ImageObserver observer,
+                                             float scale,
+                                             Style style);
 
-    // Draw the item
     public abstract void draw(int x, int y, float scale,
-                              Graphics g, Style style, ImageObserver observer);
+                              Graphics g,
+                              Style style,
+                              ImageObserver observer);
 
     @Override
     public int draw(Graphics g, int x, int y)
     {
-        // You can adjust this default behavior as needed.
-        draw(x, y, 1.0f, g, style, null);
-        // Advance y by a default spacing (e.g., style leading plus font height)
-        return y + style.leading + g.getFontMetrics(style.getFont(1.0f)).getHeight();
+        this.draw(x, y, 1.0f, g, this.style, null);
+        return y + this.style.leading + g.getFontMetrics(this.style.getFont(1.0f)).getHeight();
     }
 }

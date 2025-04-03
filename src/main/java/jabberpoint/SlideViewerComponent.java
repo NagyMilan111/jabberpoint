@@ -3,38 +3,27 @@ package jabberpoint;
 import javax.swing.*;
 import java.awt.*;
 
-
 /**
- * <p>jabberpoint.SlideViewerComponent is a graphical component that can show slides.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+ * SlideViewerComponent is a graphical component that can show slides.
  */
-
 public class SlideViewerComponent extends JComponent
 {
 
     private static final long serialVersionUID = 227L;
     private static final Color BGCOLOR = Color.white;
-    private static final Color COLOR = Color.black;
-    private static final String FONTNAME = "Dialog";
-    private static final int FONTSTYLE = Font.BOLD;
-    private static final int FONTHEIGHT = 10;
-    private static final int XPOS = 1100;
-    private static final int YPOS = 20;
+
     private Slide slide; // current slide
-    private Font labelFont = null; // font for labels
-    private Presentation presentation = null; // the presentation
+    private Presentation presentation = null;
     private JFrame frame = null;
 
     public SlideViewerComponent(Presentation pres, JFrame frame)
     {
-        setBackground(BGCOLOR);
-        presentation = pres;
-        labelFont = new Font(FONTNAME, FONTSTYLE, FONTHEIGHT);
+        this.setBackground(BGCOLOR);
+        this.presentation = pres;
         this.frame = frame;
     }
 
+    @Override
     public Dimension getPreferredSize()
     {
         return new Dimension(Slide.WIDTH, Slide.HEIGHT);
@@ -44,57 +33,38 @@ public class SlideViewerComponent extends JComponent
     {
         if (data == null)
         {
-            repaint();
+            this.repaint();
             return;
         }
 
         this.presentation = presentation;
         this.slide = data;
-        repaint();
-        frame.setTitle(presentation.getTitle());
+        this.repaint();
+        this.frame.setTitle(this.presentation.getTitle());
     }
 
-    // draw the slide
-//    public void paintComponent(Graphics g)
-//    {
-//        g.setColor(BGCOLOR);
-//        g.fillRect(0, 0, getSize().width, getSize().height);
-//
-//        if (presentation.getSlideNumber() < 0 || slide == null)
-//        {
-//            return;
-//        }
-//
-//        g.setFont(labelFont);
-//        g.setColor(COLOR);
-//        g.drawString("jabberpoint.Slide " + (1 + presentation.getSlideNumber()) + " of " +
-//                presentation.getSize(), XPOS, YPOS);
-//        Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-//        slide.draw(g, area, this);
-//    }
+    @Override
     public void paintComponent(Graphics g)
     {
         g.setColor(BGCOLOR);
-        g.fillRect(0, 0, getSize().width, getSize().height);
+        g.fillRect(0, 0, this.getSize().width, this.getSize().height);
 
-        if (presentation.getSlideNumber() < 0 || slide == null)
+        if (this.presentation.getSlideNumber() < 0 || this.slide == null)
         {
             return;
         }
 
-        g.setFont(labelFont);
-        g.setColor(COLOR);
+        Style pageStyle = Style.getStyle(1);
+        g.setFont(pageStyle.getFont());
+        g.setColor(pageStyle.color);
 
-        // Draw the slide number in bottom-right
-        String slideInfo = "Slide " + (1 + presentation.getSlideNumber()) + " of " + presentation.getSize();
-        FontMetrics metrics = g.getFontMetrics(labelFont);
-        int x = getWidth() - metrics.stringWidth(slideInfo) - 20;
-        int y = getHeight() - 10;
-        g.drawString(slideInfo, x, y);
+        String slideText = "Slide " + (this.presentation.getSlideNumber() + 1) + " of " + this.presentation.getSize();
+        FontMetrics metrics = g.getFontMetrics();
+        int x = this.getWidth() - metrics.stringWidth(slideText) - 20;
+        int y = this.getHeight() - 10;
+        g.drawString(slideText, x, y);
 
-        // Draw the slide itself
-        Rectangle area = new Rectangle(0, YPOS, getWidth(), (getHeight() - YPOS));
-        slide.draw(g, area, this);
+        Rectangle area = new Rectangle(0, 20, this.getWidth(), this.getHeight() - 20);
+        this.slide.draw(g, area, this);
     }
-
 }

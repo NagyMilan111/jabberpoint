@@ -59,17 +59,22 @@ import jabberpoint.commands.*;
 import javax.swing.*;
 import java.io.IOException;
 
-public class JabberPoint {
+public class JabberPoint
+{
 
     private static final String IOERR = "IO Error: ";
     private static final String JABERR = "JabberPoint Error";
     private static final String JABVERSION = "JabberPoint 1.6 - OU";
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         // Set OS-native look and feel
-        try {
+        try
+        {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             System.err.println("Could not set look and feel: " + e.getMessage());
         }
 
@@ -93,26 +98,29 @@ public class JabberPoint {
 
         frame.setupControllers(invoker);
 
-        try {
+        try
+        {
             // 🔄 If you want a demo slide when no file is provided:
-            if (args.length == 0) {
+            if (args.length == 0)
+            {
                 Accessor.getDemoAccessor().loadFile(presentation, "");
-            } else {
+            }
+            else
+            {
                 new XMLAccessor().loadFile(presentation, args[0]);
             }
             presentation.setSlideNumber(0);
 
-        } catch (IOException ex) {
+        }
+        catch (IOException ex)
+        {
             JOptionPane.showMessageDialog(null, IOERR + ex.getMessage(), JABERR, JOptionPane.ERROR_MESSAGE);
         }
-
-        // ✅ OPTIONAL: If you want to show a manual welcome slide instead of loading demo file, use this instead:
 
         Slide welcome = new Slide();
         welcome.setTitle("Welcome to JabberPoint!");
         welcome.append(SlideItemFactory.createSlideItem("text", 1, Style.getStyle(1), "Use File > Open to load a presentation."));
         presentation.append(welcome);
         presentation.setSlideNumber(0);
-
     }
 }

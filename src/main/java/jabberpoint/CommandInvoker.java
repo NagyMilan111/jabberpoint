@@ -13,13 +13,13 @@ public class CommandInvoker
 
     public void executeCommand(String action, Integer slideNumber)
     {
-        if (this.commands.containsKey(action))
+        if ("Goto".equals(action) && this.commands.containsKey(action))
         {
-            commands.get(action).execute(null);
+            this.commands.get(action).execute(slideNumber);
         }
-        else if (action.equals("GOTO") && commands.containsKey(action))
+        else if (this.commands.containsKey(action))
         {
-            commands.get(action).execute(slideNumber);
+            this.commands.get(action).execute(null);
         }
     }
 
