@@ -19,8 +19,15 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
+      - name: Start X virtual framebuffer (Xvfb)
+        run: Xvfb :99 -ac &
+
+      - name: Set DISPLAY environment variable
+        run: echo "DISPLAY=:99" >> $GITHUB_ENV
+
       - name: Build and Test with Maven
         run: mvn -B clean verify --file pom.xml
+
 
       # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
       - name: Update dependency graph
