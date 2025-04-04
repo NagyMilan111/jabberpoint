@@ -68,7 +68,7 @@ class MenuControllerTest
         this.presentation.append(welcome);
         this.presentation.setSlideNumber(0);
 
-        this.menuController = new MenuController(this.frame, this.invoker);
+        this.menuController = new MenuController(this.invoker);
     }
 
     private class TestCommand implements Command

@@ -56,8 +56,8 @@ public class SlideViewerFrame extends JFrame
 
     public void setupControllers(CommandInvoker invoker)
     {
-        this.addKeyListener(new KeyController(this, invoker));
-        this.setMenuBar(new MenuController(this, invoker));
+        this.addKeyListener(new KeyController(invoker));
+        this.setMenuBar(new MenuController(invoker));
     }
 
     public Presentation getPresentation()

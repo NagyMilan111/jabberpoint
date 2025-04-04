@@ -13,7 +13,6 @@ import static jabberpoint.Constants.SLIDEWIDTH;
 public class Slide implements SlideComponent
 {
 
-
     protected String title;
     protected Vector<SlideComponent> components;
 
@@ -79,11 +78,10 @@ public class Slide implements SlideComponent
     }
 
     @Override
-    public int draw(Graphics g, int x, int y)
+    public void draw(Graphics g, int x, int y)
     {
         Rectangle area = new Rectangle(x, y, SLIDEWIDTH, SLIDEHEIGHT);
         this.draw(g, area, null);
-        return y;
     }
 
     private float getScale(Rectangle area)

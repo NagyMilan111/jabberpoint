@@ -74,7 +74,7 @@ class PresentationTest
     void previousSlideTestFrom0ShouldNotChange()
     {
         this.presentation.setSlideNumber(0);
-        this.invoker.executeCommand(NEXT);
+        this.invoker.executeCommand(PREV);
 
         assertEquals(0, this.presentation.getSlideNumber());
     }

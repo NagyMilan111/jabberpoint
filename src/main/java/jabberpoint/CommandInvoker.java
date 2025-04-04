@@ -2,6 +2,8 @@ package jabberpoint;
 
 import java.util.HashMap;
 
+import static jabberpoint.Constants.GOTO;
+
 public class CommandInvoker
 {
     private HashMap<String, Command> commands;
@@ -13,11 +15,7 @@ public class CommandInvoker
 
     public void executeCommand(String action)
     {
-        if ("Goto".equals(action) && this.commands.containsKey(action))
-        {
-            this.commands.get(action).execute();
-        }
-        else if (this.commands.containsKey(action))
+        if (this.commands.containsKey(action))
         {
             this.commands.get(action).execute();
         }

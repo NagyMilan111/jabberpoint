@@ -11,7 +11,7 @@ public class Presentation
     private String showTitle; // title of the presentation
     private ArrayList<Slide> showList; // list of slides
     private int currentSlideNumber = 0; // current slide number
-    private SlideViewerComponent slideViewComponent = null; // slide view component
+    private SlideViewerComponent slideViewComponent; // slide view component
 
     public Presentation()
     {

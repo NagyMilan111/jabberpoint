@@ -57,9 +57,11 @@ public abstract class SlideItem implements SlideComponent
                               ImageObserver observer);
 
     @Override
-    public int draw(Graphics g, int x, int y)
+    public void draw(Graphics g, int x, int y)
     {
         this.draw(x, y, 1.0f, g, this.style, null);
-        return y + this.style.leading + g.getFontMetrics(this.style.getFont(1.0f)).getHeight();
+        g.getFontMetrics(this.style.getFont(1.0f)).getHeight();
     }
+
+    public abstract String toString();
 }

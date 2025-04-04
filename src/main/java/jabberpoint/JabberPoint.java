@@ -86,14 +86,14 @@ public class JabberPoint
         CommandInvoker invoker = new CommandInvoker();
 
         // Register all commands
-        invoker.addCommand("Open", new OpenFileCommand(frame));
-        invoker.addCommand("Save", new SaveCommand(frame));
-        invoker.addCommand("Exit", new ExitApplicationCommand(frame));
-        invoker.addCommand("Next", new NextSlideCommand(frame));
-        invoker.addCommand("Prev", new PreviousSlideCommand(frame));
-        invoker.addCommand("Goto", new GoToSlideCommand(frame));
-        invoker.addCommand("New", new NewFileCommand(frame));
-        invoker.addCommand("About", new AboutBoxCommand(frame));
+        invoker.addCommand(OPEN, new OpenFileCommand(frame));
+        invoker.addCommand(SAVE, new SaveCommand(frame));
+        invoker.addCommand(EXIT, new ExitApplicationCommand(frame));
+        invoker.addCommand(NEXT, new NextSlideCommand(frame));
+        invoker.addCommand(PREV, new PreviousSlideCommand(frame));
+        invoker.addCommand(GOTO, new GoToSlideCommand(frame));
+        invoker.addCommand(NEW, new NewFileCommand(frame));
+        invoker.addCommand(ABOUT, new AboutBoxCommand(frame));
 
         frame.setupControllers(invoker);
 

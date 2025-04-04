@@ -14,12 +14,11 @@ import static jabberpoint.Constants.*;
 
 public class KeyController extends KeyAdapter
 {
-    private final SlideViewerFrame frame; //This is probably supposed to be a singleton, but isn't
     private final CommandInvoker invoker;
 
-    public KeyController(SlideViewerFrame frame, CommandInvoker invoker)
+    public KeyController(CommandInvoker invoker)
     {
-        this.frame = frame;
+
         this.invoker = invoker;
     }
 
@@ -33,16 +32,16 @@ public class KeyController extends KeyAdapter
             case KeyEvent.VK_DOWN:
             case KeyEvent.VK_ENTER:
             case '+':
-                invoker.executeCommand(NEXT);
+                this.invoker.executeCommand(NEXT);
                 break;
             case KeyEvent.VK_PAGE_UP:
             case KeyEvent.VK_UP:
             case '-':
-                invoker.executeCommand(PREV);
+                this.invoker.executeCommand(PREV);
                 break;
             case 'q':
             case 'Q':
-                invoker.executeCommand(EXIT);
+                this.invoker.executeCommand(EXIT);
             default:
                 break;
         }

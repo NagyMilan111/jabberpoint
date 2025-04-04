@@ -41,7 +41,7 @@ class KeyControllerTest
         this.invoker.addCommand(PREV, new PreviousSlideCommand(this.frame));
         this.invoker.addCommand(EXIT, new ExitApplicationCommand(this.frame));
         this.frame.setupControllers(this.invoker);
-        this.keyController = new KeyController(this.frame, this.invoker);
+        this.keyController = new KeyController(this.invoker);
 
 
     }

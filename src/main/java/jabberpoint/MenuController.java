@@ -9,12 +9,10 @@ import static jabberpoint.Constants.*;
 public class MenuController extends MenuBar
 {
 
-    private final SlideViewerFrame parent;
     private final CommandInvoker invoker;
 
-    public MenuController(SlideViewerFrame frame, CommandInvoker invoker)
+    public MenuController(CommandInvoker invoker)
     {
-        this.parent = frame;
         this.invoker = invoker;
 
         MenuItem menuItem;

@@ -12,12 +12,11 @@ public class Style
 {
 
     private static Style[] styles;
-
-    int indent;
-    Color color;
-    Font font;
-    int fontSize;
-    int leading;
+    protected int indent;
+    protected Color color;
+    protected Font font;
+    protected int fontSize;
+    protected int leading;
 
     public Style(int indent, Color color, int points, int leading)
     {
