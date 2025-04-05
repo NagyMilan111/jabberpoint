@@ -11,7 +11,7 @@ public class NewFileCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         this.frame.getPresentation().clear();
         this.frame.repaint();

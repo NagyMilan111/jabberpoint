@@ -1,91 +1,84 @@
 package jabberpoint;
 
-import java.awt.Rectangle;
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.io.File;
-
-import javax.imageio.ImageIO;
-
 import java.io.IOException;
 
+import static jabberpoint.Constants.FILE;
+import static jabberpoint.Constants.NOT_FOUND;
 
-/** <p>De klasse voor een Bitmap item</p>
+/**
+ * <p>The class for a Bitmap item.</p>
  * <p>Bitmap items have the responsibility to draw themselves.</p>
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.1 2002/12/17 Gert Florijn
- * @version 1.2 2003/11/19 Sylvia Stuurman
- * @version 1.3 2004/08/17 Sylvia Stuurman
- * @version 1.4 2007/07/16 Sylvia Stuurman
- * @version 1.5 2010/03/03 Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
-*/
-
+ */
 public class BitmapItem extends SlideItem
 {
-  private BufferedImage bufferedImage;
-  private final String imageName;
-  protected static final String FILE = "File ";
-  protected static final String NOT_FOUND = " not found";
 
-// level is equal to item-level; name is the name of the file with the Image
-public BitmapItem(int level, Style style, String name)
-{
-	super(level, style);
-	this.imageName = name;
 
-	try
-	{
-		if (name != null)
-		{
-			bufferedImage = ImageIO.read(new File(imageName));
-		}
-	}
-	catch (IOException e)
-	{
-		System.err.println(FILE + imageName + NOT_FOUND);
-	}
-}
+    private final String imageName;
+    private BufferedImage bufferedImage;
 
-// An empty bitmap-item
-	public BitmapItem()
-	{
-		this(0, Style.getStyle(0), null);
-	}
+    // level is equal to item-level; name is the name of the file with the Image
+    public BitmapItem(int level, Style style, String name)
+    {
+        super(level, style);
+        this.imageName = name;
 
-// give the filename of the image
-	public String getName()
-	{
-		return imageName;
-	}
+        try
+        {
+            if (this.imageName != null)
+            {
+                this.bufferedImage = ImageIO.read(new File(this.imageName));
+            }
+        }
+        catch (IOException e)
+        {
+            System.err.println(FILE + this.imageName + NOT_FOUND);
+        }
+    }
 
-// give the  bounding box of the image
-	@Override
-	public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
-	{
-		if (bufferedImage == null) return new Rectangle(0, 0, 0, 0);
-		int width = (int) (bufferedImage.getWidth(observer) * scale);
-		int height = (int) (bufferedImage.getHeight(observer) * scale);
+    // An empty bitmap-item
+    public BitmapItem()
+    {
+        this(0, Style.getStyle(0), null);
+    }
 
-		return new Rectangle((int) (myStyle.indent * scale), 0, width, (int)(myStyle.leading * scale) + height);
-	}
+    // Give the filename of the image
+    public String getName()
+    {
+        return this.imageName;
+    }
 
-// draw the image
-	@Override
-	public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
-	{
-		if (bufferedImage == null) return;
+    // Give the bounding box of the image
+    @Override
+    public Rectangle getBoundingBox(Graphics g, ImageObserver observer, float scale, Style myStyle)
+    {
+        if (this.bufferedImage == null) return new Rectangle(0, 0, 0, 0);
 
-		int drawX = x + (int)(myStyle.indent * scale);
-		int drawY = y + (int)(myStyle.leading * scale);
-		int width = (int)(bufferedImage.getWidth(observer) * scale);
-		int height = (int)(bufferedImage.getHeight(observer) * scale);
-		g.drawImage(bufferedImage, drawX, drawY, width, height, observer);
-	}
+        int width = (int) (this.bufferedImage.getWidth(observer) * scale);
+        int height = (int) (this.bufferedImage.getHeight(observer) * scale);
+        return new Rectangle((int) (myStyle.indent * scale), 0, width, (int) (myStyle.leading * scale) + height);
+    }
 
-	public String toString()
-	{
-		return "BitmapItem[" + getLevel() + "," + imageName + "]";
-	}
+    // Draw the image
+    @Override
+    public void draw(int x, int y, float scale, Graphics g, Style myStyle, ImageObserver observer)
+    {
+        if (this.bufferedImage == null) return;
+
+        int drawX = x + (int) (myStyle.indent * scale);
+        int drawY = y + (int) (myStyle.leading * scale);
+        int width = (int) (this.bufferedImage.getWidth(observer) * scale);
+        int height = (int) (this.bufferedImage.getHeight(observer) * scale);
+        g.drawImage(this.bufferedImage, drawX, drawY, width, height, observer);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "BitmapItem[" + this.getLevel() + "," + this.imageName + "]";
+    }
 }

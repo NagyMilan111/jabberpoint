@@ -1,151 +1,115 @@
 package jabberpoint;
 
-import jabberpoint.commands.AboutBoxCommand;
-
-import java.awt.MenuBar;
-import java.awt.Frame;
-import java.awt.Menu;
-import java.awt.MenuItem;
-import java.awt.MenuShortcut;
-import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
+import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
+import static jabberpoint.Constants.*;
 
-/**
- * <p>The controller for the menu</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
- */
 public class MenuController extends MenuBar
 {
 
-    private SlideViewerFrame parent; // the frame, only used as parent for the Dialogs
+    private final CommandInvoker invoker;
 
-    private static final long serialVersionUID = 227L;
-
-    private CommandInvoker invoker;
-
-    public static final String ABOUT = "About";
-    public static final String FILE = "File";
-    public static final String EXIT = "Exit";
-    public static final String GOTO = "Go to";
-    public static final String HELP = "Help";
-    public static final String NEW = "New";
-    public static final String NEXT = "Next";
-    public static final String OPEN = "Open";
-    public static final String PAGENR = "Page number?";
-    public static final String PREV = "Prev";
-    public static final String SAVE = "Save";
-    public static final String VIEW = "View";
-
-    public static final String TESTFILE = "test.xml";
-    public static final String SAVEFILE = "dump.xml";
-
-    public static final String IOEX = "IO Exception: ";
-    public static final String LOADERR = "Load Error";
-    public static final String SAVEERR = "Save Error";
-
-    public MenuController(SlideViewerFrame frame, CommandInvoker invoker)
+    public MenuController(CommandInvoker invoker)
     {
-        parent = frame;
-        MenuItem menuItem;
-        Menu fileMenu = new Menu(FILE);
         this.invoker = invoker;
 
-        //Open a new presentation
-        fileMenu.add(menuItem = mkMenuItem(OPEN));
+        MenuItem menuItem;
+        Menu fileMenu = new Menu(FILE);
+
+        // Open a new presentation
+        fileMenu.add(menuItem = this.mkMenuItem(OPEN));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                invoker.executeCommand(OPEN, null);
+                MenuController.this.invoker.executeCommand(OPEN);
             }
         });
 
-        //Create a new blank presentation
-        fileMenu.add(menuItem = mkMenuItem(NEW));
+        // Create a new blank presentation
+        fileMenu.add(menuItem = this.mkMenuItem(NEW));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                invoker.executeCommand(NEW, null);
+                MenuController.this.invoker.executeCommand(NEW);
             }
         });
 
-        //Save presentation to file
-        fileMenu.add(menuItem = mkMenuItem(SAVE));
+        // Save presentation to file
+        fileMenu.add(menuItem = this.mkMenuItem(SAVE));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-				invoker.executeCommand(SAVE, null);
-
+                MenuController.this.invoker.executeCommand(SAVE);
             }
         });
 
-        //Exit Jabberpoint
+        // Exit Jabberpoint
         fileMenu.addSeparator();
-        fileMenu.add(menuItem = mkMenuItem(EXIT));
+        fileMenu.add(menuItem = this.mkMenuItem(EXIT));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-				invoker.executeCommand(EXIT, null);
-
-			}
+                MenuController.this.invoker.executeCommand(EXIT);
+            }
         });
-        add(fileMenu);
 
-        //Next slide
+        this.add(fileMenu);
+
+        // View menu
         Menu viewMenu = new Menu(VIEW);
-        viewMenu.add(menuItem = mkMenuItem(NEXT));
+
+        // Next slide
+        viewMenu.add(menuItem = this.mkMenuItem(NEXT));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-				invoker.executeCommand(NEXT, null);
-
-			}
-        });
-
-        //Previous slide
-        viewMenu.add(menuItem = mkMenuItem(PREV));
-        menuItem.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-				invoker.executeCommand(PREV, null);
-			}
-        });
-
-        //Go to the entered slide number
-        viewMenu.add(menuItem = mkMenuItem(GOTO));
-        menuItem.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent actionEvent)
-            {
-				invoker.executeCommand(GOTO, null);
+                MenuController.this.invoker.executeCommand(NEXT);
             }
         });
-        add(viewMenu);
 
-        //Open about box
+        // Previous slide
+        viewMenu.add(menuItem = this.mkMenuItem(PREV));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(PREV);
+            }
+        });
+
+        // Go to slide
+        viewMenu.add(menuItem = this.mkMenuItem(GOTO));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(GOTO);
+            }
+        });
+
+        this.add(viewMenu);
+
+        // Help menu
         Menu helpMenu = new Menu(HELP);
-        helpMenu.add(menuItem = mkMenuItem(ABOUT));
+        helpMenu.add(menuItem = this.mkMenuItem(ABOUT));
         menuItem.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent actionEvent)
             {
-                invoker.executeCommand(ABOUT, null);
+                MenuController.this.invoker.executeCommand(ABOUT);
             }
         });
-        setHelpMenu(helpMenu);        // needed for portability (Motif, etc.).
+
+        this.setHelpMenu(helpMenu);
     }
 
-    // create a menu item
     public MenuItem mkMenuItem(String name)
     {
         return new MenuItem(name, new MenuShortcut(name.charAt(0)));

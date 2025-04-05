@@ -8,7 +8,7 @@ import jabberpoint.XMLAccessor;
 import javax.swing.*;
 import java.io.IOException;
 
-import static jabberpoint.MenuController.*;
+import static jabberpoint.Constants.*;
 
 public class SaveCommand extends SlideViewerFrameController
 {
@@ -19,12 +19,14 @@ public class SaveCommand extends SlideViewerFrameController
     }
 
     @Override
-    public void execute(Integer slideNumber)
+    public void execute()
     {
         Accessor xmlAccessor = new XMLAccessor();
-        try {
+        try
+        {
             xmlAccessor.saveFile(this.frame.getPresentation(), SAVEFILE);
-        } catch (IOException exc) {
+        } catch (IOException exc)
+        {
             JOptionPane.showMessageDialog(this.frame, IOEX + exc,
                     SAVEERR, JOptionPane.ERROR_MESSAGE);
         }

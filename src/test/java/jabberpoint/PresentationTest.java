@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static jabberpoint.Constants.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PresentationTest
 {
@@ -27,17 +28,16 @@ class PresentationTest
         {
             Accessor.getDemoAccessor().loadFile(this.presentation, "");
 
-        }
-        catch (IOException exception)
+        } catch (IOException exception)
         {
             System.out.println("Something went wrong while trying to load the demo");
         }
 
         this.invoker = new CommandInvoker();
-        this.frame = new SlideViewerFrame("TEST VERSION", this.presentation);
-        this.invoker.addCommand("Next", new NextSlideCommand(this.frame));
-        this.invoker.addCommand("Prev", new PreviousSlideCommand(this.frame));
-        this.invoker.addCommand("Exit", new ExitApplicationCommand(this.frame));
+        this.frame = new SlideViewerFrame(JABVERSION, this.presentation);
+        this.invoker.addCommand(NEXT, new NextSlideCommand(this.frame));
+        this.invoker.addCommand(PREV, new PreviousSlideCommand(this.frame));
+        this.invoker.addCommand(EXIT, new ExitApplicationCommand(this.frame));
         this.frame.setupControllers(this.invoker);
 
 
@@ -47,7 +47,7 @@ class PresentationTest
     void nextSlideTestFromSlide0ShouldGoToTheNextSlide()
     {
         this.presentation.setSlideNumber(0);
-        this.invoker.executeCommand("Next", null);
+        this.invoker.executeCommand(NEXT);
 
         assertEquals(1, this.presentation.getSlideNumber());
     }
@@ -56,7 +56,7 @@ class PresentationTest
     void nextSlideTestFromSlideBeforeTheLastShouldGoToTheNext()
     {
         this.presentation.setSlideNumber(this.presentation.getSize() - 2);
-        this.invoker.executeCommand("Next", null);
+        this.invoker.executeCommand(NEXT);
 
         assertEquals(this.presentation.getSize() - 1, this.presentation.getSlideNumber());
     }
@@ -65,7 +65,7 @@ class PresentationTest
     void nextSlideTestFromLastSlideShouldNotChange()
     {
         this.presentation.setSlideNumber(this.presentation.getSize() - 1);
-        this.invoker.executeCommand("Next", null);
+        this.invoker.executeCommand(NEXT);
 
         assertEquals(this.presentation.getSize() - 1, this.presentation.getSlideNumber());
     }
@@ -74,7 +74,7 @@ class PresentationTest
     void previousSlideTestFrom0ShouldNotChange()
     {
         this.presentation.setSlideNumber(0);
-        this.invoker.executeCommand("Prev", null);
+        this.invoker.executeCommand(PREV);
 
         assertEquals(0, this.presentation.getSlideNumber());
     }

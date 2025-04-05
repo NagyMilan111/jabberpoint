@@ -4,5 +4,5 @@ import java.awt.*;
 
 public interface SlideComponent
 {
-    int draw(Graphics g, int x, int y);
+    void draw(Graphics g, int x, int y);
 }

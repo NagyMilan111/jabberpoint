@@ -2,49 +2,43 @@ package jabberpoint;
 
 import java.util.ArrayList;
 
-
 /**
- * <p>jabberpoint.Presentation maintains the slides in the presentation.</p>
- * <p>There is only instance of this class.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
+ * Maintains the slides in the presentation.
+ * There is only one instance of this class per presentation.
  */
-
 public class Presentation
 {
     private String showTitle; // title of the presentation
-    private ArrayList<Slide> showList = null; // an ArrayList with Slides
-    private int currentSlideNumber = 0; // the slide number of the current jabberpoint.Slide
-    private SlideViewerComponent slideViewComponent = null; // the view component of the Slides
+    private ArrayList<Slide> showList; // list of slides
+    private int currentSlideNumber = 0; // current slide number
+    private SlideViewerComponent slideViewComponent; // slide view component
 
     public Presentation()
     {
-        slideViewComponent = null;
-        clear();
+        this.slideViewComponent = null;
+        this.clear();
     }
 
     public Presentation(SlideViewerComponent slideViewerComponent)
     {
         this.slideViewComponent = slideViewerComponent;
-        clear();
+        this.clear();
     }
 
-
-    //get the size of the presentation, in number of slides
+    // Get the number of slides in the presentation
     public int getSize()
     {
-        return showList.size();
+        return this.showList.size();
     }
 
     public String getTitle()
     {
-        return showTitle;
+        return this.showTitle;
     }
 
-    public void setTitle(String nt)
+    public void setTitle(String title)
     {
-        showTitle = nt;
+        this.showTitle = title;
     }
 
     public void setShowView(SlideViewerComponent slideViewerComponent)
@@ -52,71 +46,68 @@ public class Presentation
         this.slideViewComponent = slideViewerComponent;
     }
 
-    // give the number of the current slide
     public int getSlideNumber()
     {
-        return currentSlideNumber;
+        return this.currentSlideNumber;
     }
 
-    // change the current slide number according to the number
     public void setSlideNumber(int number)
     {
-        currentSlideNumber = number;
-        if (slideViewComponent != null)
+        this.currentSlideNumber = number;
+
+        if (this.slideViewComponent != null)
         {
-            slideViewComponent.update(this, getCurrentSlide());
+            this.slideViewComponent.update(this, this.getCurrentSlide());
         }
     }
 
-    // go to the previous slide unless your at the beginning of the presentation
+    // Go to previous slide (if not at the beginning)
     public void prevSlide()
     {
         if (this.currentSlideNumber > 0)
         {
-            setSlideNumber(this.currentSlideNumber - 1);
+            this.setSlideNumber(this.currentSlideNumber - 1);
         }
     }
 
-    // go to the next slide unless your at the end of the presentation.
+    // Go to next slide (if not at the end)
     public void nextSlide()
     {
         if (this.currentSlideNumber < (this.getSize() - 1))
         {
-            setSlideNumber(this.currentSlideNumber + 1);
+            this.setSlideNumber(this.currentSlideNumber + 1);
         }
     }
 
-    // Delete the presentation to be ready for the next one.
+    // Reset the presentation
     public void clear()
     {
-        showList = new ArrayList<Slide>();
-        setSlideNumber(0);
+        this.showList = new ArrayList<>();
+        this.setSlideNumber(0);
     }
 
-    // Add a slide to the presentation
     public void append(Slide slide)
     {
-        showList.add(slide);
+        this.showList.add(slide);
     }
 
-    // Get a slide with a certain slide number
     public Slide getSlide(int number)
     {
-        if (number < 0 || number >= getSize())
+        if (number < 0 || number >= this.getSize())
         {
-            return null; //this should probably return an error message instead tbh
+            return null; // Consider logging or throwing exception here
         }
-        return (Slide) showList.get(number);
+
+        return this.showList.get(number);
     }
 
-    // Give the current slide
     public Slide getCurrentSlide()
     {
-        return getSlide(currentSlideNumber);
+        return this.getSlide(this.currentSlideNumber);
     }
 
-    public void exit(int n)
+    public void exit(int statusCode)
     {
-        System.exit(n);
+        System.exit(statusCode);
     }
 }

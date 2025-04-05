@@ -1,112 +1,100 @@
 package jabberpoint;
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.image.ImageObserver;
-import java.io.Serializable;
 import java.util.Vector;
 
-/**
- * <p>A slide. This class has a drawing functionality.</p>
- *
- * @author Ian F. Darwin, ian@darwinsys.com, Gert Florijn, Sylvia Stuurman
- * @version 1.6 2014/05/16 Sylvia Stuurman
- */
+import static jabberpoint.Constants.SLIDEHEIGHT;
+import static jabberpoint.Constants.SLIDEWIDTH;
 
+/**
+ * A Slide. This class has drawing functionality.
+ */
 public class Slide implements SlideComponent
 {
-	public final static int WIDTH = 1200;
-	public final static int HEIGHT = 800;
 
-	protected String title; // title is saved separately
-	protected Vector<SlideComponent> components; // slide items are saved in a Vector
+    protected String title;
+    protected Vector<SlideComponent> components;
 
-	public Slide()
-	{
-		this.components = new Vector<>();
-	}
+    public Slide()
+    {
+        this.components = new Vector<>();
+    }
 
-	// Add a slide item
-	public void append(SlideComponent comp)
-	{
-		components.add(comp);
-	}
+    // Add a slide item
+    public void append(SlideComponent comp)
+    {
+        this.components.add(comp);
+    }
 
-	public void append(int level, String message)
-	{
-		append(SlideItemFactory.createSlideItem("text", level, Style.getStyle(level), message));
-	}
+    public void append(int level, String message)
+    {
+        this.append(SlideItemFactory.createSlideItem("text", level, Style.getStyle(level), message));
+    }
 
-	// give the title of the slide
-	public String getTitle()
-	{
-		return title;
-	}
+    public String getTitle()
+    {
+        return this.title;
+    }
 
-	// change the title of the slide
-	public void setTitle(String newTitle)
-	{
-		title = newTitle;
-	}
+    public void setTitle(String newTitle)
+    {
+        this.title = newTitle;
+    }
 
-	// give the  SlideItem
-	public SlideComponent getSlideItem(int number)
-	{
-		return components.get(number);
-	}
+    public SlideComponent getSlideItem(int number)
+    {
+        return this.components.get(number);
+    }
 
-	// give all SlideItems in a Vector
-	public Vector<SlideComponent> getSlideItems()
-	{
-		return components;
-	}
+    public Vector<SlideComponent> getSlideItems()
+    {
+        return this.components;
+    }
 
-	// give the size of the Slide
-	public int getSize()
-	{
-		return components.size();
-	}
+    public int getSize()
+    {
+        return this.components.size();
+    }
 
-	// draw the slide
-	public void draw(Graphics g, Rectangle area, ImageObserver view)
-	{
-		float scale = getScale(area);
-		int y = area.y;
+    // Draw the slide
+    public void draw(Graphics g, Rectangle area, ImageObserver view)
+    {
+        float scale = this.getScale(area);
+        int y = area.y;
 
+        // Draw title separately
+        SlideComponent slideComponent = SlideItemFactory.createSlideItem("text", 0, Style.getStyle(0), this.getTitle());
+        slideComponent.draw(g, area.x, y);
+        y += ((TextItem) slideComponent).getBoundingBox(g, view, scale, Style.getStyle(0)).height;
 
-		// Title is handled separately
-		SlideComponent slideComponent = SlideItemFactory.createSlideItem("text",0, Style.getStyle(0), getTitle());
-		slideComponent.draw(g, area.x, y);
-		y += ((TextItem) slideComponent).getBoundingBox(g, view, scale, Style.getStyle(0)).height;
+        for (int number = 0; number < this.getSize(); number++)
+        {
+            SlideComponent component = this.components.elementAt(number);
+            Style style = Style.getStyle(this.getComponentLevel(component));
+            component.draw(g, area.x, y);
+            y += ((SlideItem) component).getBoundingBox(g, view, scale, style).height;
+        }
+    }
 
-		for (int number = 0; number < getSize(); number++)
-		{
-			SlideComponent component = getSlideItems().elementAt(number);
-			Style style = Style.getStyle(getComponentLevel(component));
-			component.draw(g, area.x, y);
-			y += ((SlideItem) component).getBoundingBox(g, view, scale, style).height;
-		}
-	}
+    @Override
+    public void draw(Graphics g, int x, int y)
+    {
+        Rectangle area = new Rectangle(x, y, SLIDEWIDTH, SLIDEHEIGHT);
+        this.draw(g, area, null);
+    }
 
-	@Override
-	public int draw(Graphics g, int x, int y)
-	{
-		// Create a default area using the starting x and y, or use the JFrame's dimensions.
-		Rectangle area = new Rectangle(x, y, Slide.WIDTH, Slide.HEIGHT);
-		// Call your custom drawing method
-		draw(g, area, null);
-		// Return an updated y if needed
-		return y;
-	}
+    private float getScale(Rectangle area)
+    {
+        return Math.min(((float) area.width) / SLIDEWIDTH, ((float) area.height) / SLIDEHEIGHT);
+    }
 
-	// Give the scale for drawing
-	private float getScale(Rectangle area) {
-		return Math.min(((float) area.width) / ((float) WIDTH), ((float) area.height) / ((float) HEIGHT));
-	}
-
-	private int getComponentLevel(SlideComponent comp) {
-		if (comp instanceof SlideItem)
-			return ((SlideItem) comp).getLevel();
-		return 0;
-	}
+    private int getComponentLevel(SlideComponent comp)
+    {
+        if (comp instanceof SlideItem)
+        {
+            return ((SlideItem) comp).getLevel();
+        }
+        return 0;
+    }
 }

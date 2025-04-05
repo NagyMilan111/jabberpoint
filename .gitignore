@@ -1,0 +1,6 @@
+# Ignore build output directories
+/out/
+/target/
+
+# Ignore IDE-specific files
+/.idea/

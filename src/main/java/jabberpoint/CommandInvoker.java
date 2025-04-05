@@ -2,22 +2,22 @@ package jabberpoint;
 
 import java.util.HashMap;
 
+import static jabberpoint.Constants.GOTO;
+
 public class CommandInvoker
 {
     private HashMap<String, Command> commands;
 
     public CommandInvoker()
     {
-        commands = new HashMap<>();
+        this.commands = new HashMap<>();
     }
 
-    public void executeCommand(String action, Integer slideNumber) {
-        if (commands.containsKey(action)) {
-            commands.get(action).execute(null);
-        }
-        else if (action.equals("GOTO") && commands.containsKey(action))
+    public void executeCommand(String action)
+    {
+        if (this.commands.containsKey(action))
         {
-            commands.get(action).execute(slideNumber);
+            this.commands.get(action).execute();
         }
     }
 
