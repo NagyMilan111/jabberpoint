@@ -2,9 +2,16 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+      - development
+      - workflows
   pull_request_target:
-    branches: [ "main" ]
+    branches:
+      - main
+      - development
+      - workflows
+
 
 permissions:
   contents: read
@@ -13,7 +20,9 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      security-events: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 21
