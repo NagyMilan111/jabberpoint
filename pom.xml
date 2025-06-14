@@ -35,7 +35,25 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>jabberpoint.JabberPoint</mainClass> <!-- your actual main class -->
+                    <mainClass>jabberpoint.JabberPoint</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <configLocation>google_checks.xml</configLocation> <!-- or sun_checks.xml -->
+                    <failOnViolation>true</failOnViolation>
                 </configuration>
             </plugin>
         </plugins>

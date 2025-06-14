@@ -1,0 +1,34 @@
+name: Java Build
+
+on:
+  push:
+    branches:
+      - main
+      - development
+      - workflows
+  pull_request_target:
+    branches:
+      - main
+      - development
+      - workflows
+
+permissions:
+  contents: read
+  security-events: write  # required for dependency submission
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn -B clean compile --file pom.xml
