@@ -1,4 +1,4 @@
-# JabberPoint
+# JabberPoint 
 
 JabberpPoint is an XML based presentation player. This version of Jabberpoint has been reworked to utilize design patterns and better programming practices. Numerous bugs have also been fixed, ensuring a smooth experience. The diagrams for the application can be found within the diagrams branch.
 
