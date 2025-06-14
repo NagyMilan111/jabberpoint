@@ -1,6 +1,5 @@
 name: Lint Java Code (Checkstyle)
 
-#fdsdfasfd
 
 on:
   push:
