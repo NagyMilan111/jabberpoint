@@ -1,0 +1,32 @@
+name: Lint Java Code (Checkstyle)
+
+on:
+  push:
+    branches: [main, development, workflows]
+  pull_request:
+    branches: [main, development, workflows]
+
+permissions:
+  contents: read
+  security-events: write  # required for dependency submission
+
+jobs:
+  checkstyle:
+    name: Checkstyle Lint
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      security-events: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Run Checkstyle
+        run: mvn checkstyle:check
