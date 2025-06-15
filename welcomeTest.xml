@@ -1,0 +1,7 @@
+<presentation>
+    <showtitle>Welcome to JabberPoint</showtitle>
+    <slide>
+        <title>Welcome!</title>
+        <item kind="text" level="1">Click File > Open to load a presentation.</item>
+    </slide>
+</presentation>

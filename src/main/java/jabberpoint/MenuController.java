@@ -1,0 +1,117 @@
+package jabberpoint;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static jabberpoint.Constants.*;
+
+public class MenuController extends MenuBar
+{
+
+    private final CommandInvoker invoker;
+
+    public MenuController(CommandInvoker invoker)
+    {
+        this.invoker = invoker;
+
+        MenuItem menuItem;
+        Menu fileMenu = new Menu(FILE);
+
+        // Open a new presentation
+        fileMenu.add(menuItem = this.mkMenuItem(OPEN));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(OPEN);
+            }
+        });
+
+        // Create a new blank presentation
+        fileMenu.add(menuItem = this.mkMenuItem(NEW));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(NEW);
+            }
+        });
+
+        // Save presentation to file
+        fileMenu.add(menuItem = this.mkMenuItem(SAVE));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                MenuController.this.invoker.executeCommand(SAVE);
+            }
+        });
+
+        // Exit Jabberpoint
+        fileMenu.addSeparator();
+        fileMenu.add(menuItem = this.mkMenuItem(EXIT));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(EXIT);
+            }
+        });
+
+        this.add(fileMenu);
+
+        // View menu
+        Menu viewMenu = new Menu(VIEW);
+
+        // Next slide
+        viewMenu.add(menuItem = this.mkMenuItem(NEXT));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(NEXT);
+            }
+        });
+
+        // Previous slide
+        viewMenu.add(menuItem = this.mkMenuItem(PREV));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(PREV);
+            }
+        });
+
+        // Go to slide
+        viewMenu.add(menuItem = this.mkMenuItem(GOTO));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(GOTO);
+            }
+        });
+
+        this.add(viewMenu);
+
+        // Help menu
+        Menu helpMenu = new Menu(HELP);
+        helpMenu.add(menuItem = this.mkMenuItem(ABOUT));
+        menuItem.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent actionEvent)
+            {
+                MenuController.this.invoker.executeCommand(ABOUT);
+            }
+        });
+
+        this.setHelpMenu(helpMenu);
+    }
+
+    public MenuItem mkMenuItem(String name)
+    {
+        return new MenuItem(name, new MenuShortcut(name.charAt(0)));
+    }
+}

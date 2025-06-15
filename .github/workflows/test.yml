@@ -1,0 +1,40 @@
+name: Java Test and Dependency Submission
+
+on:
+  push:
+    branches:
+      - main
+      - development
+      - workflows
+  pull_request_target:
+    branches:
+      - main
+      - development
+      - workflows
+
+permissions:
+  contents: read
+  security-events: write  # required for dependency submission
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Start X virtual framebuffer (Xvfb)
+        run: Xvfb :99 -ac &
+      - name: Set DISPLAY environment variable
+        run: echo "DISPLAY=:99" >> $GITHUB_ENV
+      - name: Test with Maven
+        run: mvn -B verify --file pom.xml
+      - name: Update dependency graph
+        uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
