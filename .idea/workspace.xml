@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0574c4ee-872b-4cb7-8ca8-9741dc305d90" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Accessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/BitmapItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/JabberPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/KeyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Slide.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/SlideViewerFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/Style.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/TextItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/XMLAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/OpenFileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jabberpoint/commands/SaveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +22,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="workflows" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -61,10 +54,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "command-pattern-with-maven",
+    "git-widget-placeholder": "workflows-push-branch",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Danubius/Documents/jabberpoint-maven/jabberpoint",
+    "last_opened_file_path": "C:/Users/Danubius/Documents/jabberpoint",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,7 +70,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.JabberPoint">
     <configuration name="JabberPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="JabberPoint" />
       <module name="jabberpoint" />
@@ -124,10 +117,69 @@
       <workItem from="1743673158966" duration="4583000" />
       <workItem from="1743704115405" duration="746000" />
       <workItem from="1743704872581" duration="886000" />
+      <workItem from="1749912647640" duration="4721000" />
     </task>
+    <task id="LOCAL-00001" summary="fix: updated workflows, testing if it works">
+      <option name="closed" value="true" />
+      <created>1749913147878</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1749913147878</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: separated workflow into build and test files">
+      <option name="closed" value="true" />
+      <created>1749913794359</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1749913794359</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: added lint checking using Checkstyle">
+      <option name="closed" value="true" />
+      <created>1749915294643</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1749915294643</updated>
+    </task>
+    <task id="LOCAL-00004" summary="fix: added lint workflow">
+      <option name="closed" value="true" />
+      <created>1749915349065</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1749915349065</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: testing workflow">
+      <option name="closed" value="true" />
+      <created>1749915793670</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1749915793670</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: testing workflows again, now with them required">
+      <option name="closed" value="true" />
+      <created>1749916042569</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1749916042569</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fix: updated workflows, testing if it works" />
+    <MESSAGE value="feat: separated workflow into build and test files" />
+    <MESSAGE value="feat: added lint checking using Checkstyle" />
+    <MESSAGE value="fix: added lint workflow" />
+    <MESSAGE value="feat: testing workflow" />
+    <MESSAGE value="feat: testing workflows again, now with them required" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: testing workflows again, now with them required" />
   </component>
 </project>
